@@ -28,13 +28,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public Contact contact(Long id) {
-        Optional<Contact> optionalContact = contactRepository.findById(id);
-
-        if (optionalContact.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The ID " + id + " does not match with any contact");
-        } else {
-            return optionalContact.get();
-        }
+        return contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "The ID " + id + " does not match with any contact"));
     }
 
     @Override
