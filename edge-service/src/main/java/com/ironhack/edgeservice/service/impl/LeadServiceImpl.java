@@ -29,6 +29,8 @@ public class LeadServiceImpl implements LeadService {
     }
 
     public void save(Lead lead)  {
+        //LLAMADA A MICROSERVICIO SALESREP ya que no se puede crear un Lead sin asignarle un sales Rep
+        //hay que comprobar que el ID del Sales rep sea valido antes de crear el lead
         //LLAMADA A MICROSERVICIO LEAD
     }
 
@@ -40,5 +42,13 @@ public class LeadServiceImpl implements LeadService {
     public Lead createLead() {
         //LLAMADA A MICROSERVICIO LEAD
         return null;
+    }
+
+    @Override
+    public void convertLead() {
+        //LLAMADA A MICROSERVICIO LEAD
+        //LLAMADA A MICROSERVICIO CONTACT
+        //LLAMADA A MICROSERVICIO ACCOUNT
+        //LLAMADA A MICROSERVICIO OPPORTUNITY
     }
 }

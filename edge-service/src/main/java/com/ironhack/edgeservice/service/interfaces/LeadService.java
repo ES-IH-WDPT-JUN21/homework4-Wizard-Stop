@@ -16,4 +16,6 @@ public interface LeadService {
     List<Lead> getAll();
 
     Lead createLead();
+
+    void convertLead();
 }

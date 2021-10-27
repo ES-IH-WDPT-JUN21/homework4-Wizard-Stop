@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient("contact-service")
+@FeignClient("customer-service")
 public interface ContAccOppServiceClient {
 
     @GetMapping("/contacts")
