@@ -1,0 +1,8 @@
+com\homework4leadservice\leadservice\controller\interfaces\LeadController.class
+com\homework4leadservice\leadservice\repository\LeadRepository.class
+com\homework4leadservice\leadservice\service\impl\LeadServiceImpl.class
+com\homework4leadservice\leadservice\controller\DTO\LeadDTO.class
+com\homework4leadservice\leadservice\service\interfaces\LeadService.class
+com\homework4leadservice\leadservice\LeadServiceApplication.class
+com\homework4leadservice\leadservice\model\Lead.class
+com\homework4leadservice\leadservice\controller\impl\LeadControllerImpl.class
