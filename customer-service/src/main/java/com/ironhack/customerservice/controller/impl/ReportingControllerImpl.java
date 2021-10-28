@@ -15,11 +15,6 @@ public class ReportingControllerImpl implements ReportingController {
     @Autowired
     ReportingService reportingService;
 
-    @GetMapping("/leads_by_sales_rep")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Object[]> showLeadsBySalesRep() {
-        return reportingService.showLeadsBySalesRep();
-    }
 
     @GetMapping("/opportunities_by_sales_rep")
     @ResponseStatus(HttpStatus.OK)
@@ -27,21 +22,21 @@ public class ReportingControllerImpl implements ReportingController {
         return reportingService.showOpportunitiesBySalesRep();
     }
 
-    @GetMapping("/closewon_opportunities_by_sales_rep")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
-        return reportingService.showClosedWonOpportunitiesBySalesRep();
-    }
-
-    @GetMapping("/closelost_opportunities_by_sales_rep")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
-        return reportingService.showClosedLostOpportunitiesBySalesRep();
-    }
-
-    @GetMapping("/open_opportunities_by_sales_rep")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Object[]> showOpenOpportunitiesBySalesRep() {
-        return reportingService.showOpenOpportunitiesBySalesRep();
-    }
+//    @GetMapping("/closewon_opportunities_by_sales_rep")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
+//        return reportingService.showClosedWonOpportunitiesBySalesRep();
+//    }
+//
+//    @GetMapping("/closelost_opportunities_by_sales_rep")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
+//        return reportingService.showClosedLostOpportunitiesBySalesRep();
+//    }
+//
+//    @GetMapping("/open_opportunities_by_sales_rep")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Object[]> showOpenOpportunitiesBySalesRep() {
+//        return reportingService.showOpenOpportunitiesBySalesRep();
+//    }
 }

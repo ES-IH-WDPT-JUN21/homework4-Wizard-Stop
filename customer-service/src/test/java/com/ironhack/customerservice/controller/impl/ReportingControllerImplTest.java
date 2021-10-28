@@ -29,10 +29,7 @@ class ReportingControllerImplTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
-    @Autowired
-    private SalesRepRepository salesRepRepository;
-    @Autowired
-    private LeadRepository leadRepository;
+
     @Autowired
     private ContactRepository contactRepository;
     @Autowired
@@ -43,11 +40,6 @@ class ReportingControllerImplTest {
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    private SalesRep salesRep1;
-    private SalesRep salesRep2;
-
-    private Lead lead1;
-    private Lead lead2;
 
     private Contact contact1;
     private Contact contact2;
@@ -102,50 +94,28 @@ class ReportingControllerImplTest {
         accountRepository.saveAll(List.of(account1, account2, account3, account4, account5, account6));
         contactRepository.saveAll(List.of(contact1, contact2, contact3, contact4, contact5, contact6, contact7, contact8));
 
-        salesRep1 = new SalesRep("Dwight Schrute");
-        salesRep2 = new SalesRep("Jim Halpert");
 
-        salesRepRepository.saveAll(List.of(salesRep1, salesRep2));
+        opportunity1 = new Opportunity(Product.BOX, 10, contact1, Status.OPEN, 1L);
 
-        lead1 = new Lead("Pepe Lopez", "687456456", "pepelopez@pepelopez.com", "Mudanzas Lopez");
-        lead2 = new Lead("Miguel Boro", "666432344", "miguelboro@gmail.com", "Dropshipping Boro");
-        lead1.setSalesRep(salesRep1);
-        lead2.setSalesRep(salesRep2);
-        leadRepository.saveAll(List.of(lead1, lead2));
+        opportunity2 = new Opportunity(Product.FLATBED, 6, contact3, Status.CLOSED_WON, 1L);
 
-        opportunity1 = new Opportunity(Product.BOX, 10, contact1, Status.OPEN, salesRep1);
-        opportunity1.setAccount(account1);
-        opportunity2 = new Opportunity(Product.FLATBED, 6, contact3, Status.CLOSED_WON, salesRep2);
-        opportunity2.setAccount(account2);
-        opportunity3 = new Opportunity(Product.HYBRID, 4, contact5, Status.CLOSED_WON, salesRep1);
-        opportunity3.setAccount(account3);
-        opportunity4 = new Opportunity(Product.FLATBED, 6, contact6, Status.CLOSED_LOST, salesRep2);
-        opportunity4.setAccount(account4);
-        opportunity5 = new Opportunity(Product.BOX, 10, contact7, Status.CLOSED_WON, salesRep1);
-        opportunity5.setAccount(account5);
-        opportunity6 = new Opportunity(Product.FLATBED, 6, contact8, Status.OPEN, salesRep2);
-        opportunity6.setAccount(account6);
+        opportunity3 = new Opportunity(Product.HYBRID, 4, contact5, Status.CLOSED_WON, 1L);
+
+        opportunity4 = new Opportunity(Product.FLATBED, 6, contact6, Status.CLOSED_LOST, 2L);
+
+        opportunity5 = new Opportunity(Product.BOX, 10, contact7, Status.CLOSED_WON, 2L);
+
+        opportunity6 = new Opportunity(Product.FLATBED, 6, contact8, Status.OPEN, 3L);
+
 
         opportunityRepository.saveAll(List.of(opportunity1,opportunity2,opportunity3,opportunity4,opportunity5,opportunity6));
     }
 
     @AfterEach
     void tearDown() {
-        leadRepository.deleteAll();
         accountRepository.deleteAll();
         opportunityRepository.deleteAll();
         contactRepository.deleteAll();
-        salesRepRepository.deleteAll();
-    }
-
-    @Test
-    void showLeadsBySalesRep_NoParams_JSON() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(get("/leads_by_sales_rep"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
     }
 
     @Test
@@ -157,36 +127,36 @@ class ReportingControllerImplTest {
 
         assertTrue(mvcResult.getResponse().getContentAsString().contains("3"));
     }
-
-    @Test
-    void showClosedWonOpportunitiesBySalesRep_NoParams_JSON() throws Exception{
-        MvcResult mvcResult = mockMvc.perform(get("/closewon_opportunities_by_sales_rep"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("2"));
-    }
-
-    @Test
-    void showClosedLostOpportunitiesBySalesRep_NoParams_JSON() throws Exception{
-        MvcResult mvcResult = mockMvc.perform(get("/closelost_opportunities_by_sales_rep"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
-
-    }
-
-    @Test
-    void showOpenOpportunitiesBySalesRep_NoParams_JSON() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(get("/open_opportunities_by_sales_rep"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
-    }
+//
+//    @Test
+//    void showClosedWonOpportunitiesBySalesRep_NoParams_JSON() throws Exception{
+//        MvcResult mvcResult = mockMvc.perform(get("/closewon_opportunities_by_sales_rep"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//                .andReturn();
+//
+//        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
+//        assertTrue(mvcResult.getResponse().getContentAsString().contains("2"));
+//    }
+//
+//    @Test
+//    void showClosedLostOpportunitiesBySalesRep_NoParams_JSON() throws Exception{
+//        MvcResult mvcResult = mockMvc.perform(get("/closelost_opportunities_by_sales_rep"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//                .andReturn();
+//
+//        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
+//
+//    }
+//
+//    @Test
+//    void showOpenOpportunitiesBySalesRep_NoParams_JSON() throws Exception {
+//        MvcResult mvcResult = mockMvc.perform(get("/open_opportunities_by_sales_rep"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//                .andReturn();
+//
+//        assertTrue(mvcResult.getResponse().getContentAsString().contains("1"));
+//    }
 }

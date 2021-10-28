@@ -24,11 +24,7 @@ public class Opportunity {
     @Enumerated(EnumType.STRING)
     @JsonBackReference
     private Status status;
-
-    @ManyToOne
-    @JoinColumn(name = "sales_rep_id")
-    @JsonBackReference
-    private SalesRep salesRep;
+    private Long salesRepId;
 
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -38,12 +34,12 @@ public class Opportunity {
     public Opportunity() {
     }
 
-    public Opportunity(Product product, int quantity, Contact decisionMaker, Status status, SalesRep salesRep) {
+    public Opportunity(Product product, int quantity, Contact decisionMaker, Status status, Long salesRepId) {
         this.product = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
         this.status = status;
-        this.salesRep = salesRep;
+        this.salesRepId = salesRepId;
 
     }
 
@@ -87,12 +83,12 @@ public class Opportunity {
         this.status = status;
     }
 
-    public SalesRep getSalesRep() {
-        return salesRep;
+    public Long getsalesRepId() {
+        return salesRepId;
     }
 
-    public void setSalesRep(SalesRep salesRep) {
-        this.salesRep = salesRep;
+    public void setsalesRepId(Long salesRepId) {
+        this.salesRepId = salesRepId;
     }
 
     public Account getAccount() {
