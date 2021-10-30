@@ -1,7 +1,6 @@
-package com.ironhack.edgeservice.dto;
+package com.ironhack.edgeservice.controller.dto;
 
 public class ContactDTO {
-
     private String name;
     private String phoneNumber;
     private String email;
@@ -58,5 +57,4 @@ public class ContactDTO {
     public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
-
 }

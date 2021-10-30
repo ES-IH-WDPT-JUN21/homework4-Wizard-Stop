@@ -1,7 +1,6 @@
 package com.ironhack.edgeservice.service.interfaces;
 
-import com.ironhack.edgeservice.dto.ContactDTO;
-import com.ironhack.edgeservice.exceptions.ExistentElementException;
+
 import com.ironhack.edgeservice.model.Contact;
 
 import java.security.InvalidParameterException;

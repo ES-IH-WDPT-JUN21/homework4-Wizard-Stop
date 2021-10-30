@@ -37,6 +37,14 @@ public class Account {
 
     }
 
+    public Account(Industry industry, int employeeCount, String city, String country, List<Contact> contacts, List<Opportunity> opportunities) {
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+        this.contacts = contacts;
+        this.opportunities = opportunities;
+    }
 
     public Long getId() {
         return id;

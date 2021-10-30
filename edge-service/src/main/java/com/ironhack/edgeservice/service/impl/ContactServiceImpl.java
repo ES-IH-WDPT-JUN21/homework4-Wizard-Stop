@@ -1,7 +1,6 @@
 package com.ironhack.edgeservice.service.impl;
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
-import com.ironhack.edgeservice.dto.ContactDTO;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.service.interfaces.ContactService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;

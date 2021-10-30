@@ -7,6 +7,7 @@ import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.model.Opportunity;
 import com.ironhack.edgeservice.model.SalesRep;
 import com.ironhack.edgeservice.service.interfaces.OpportunityService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,10 +40,14 @@ public class OpportunityServiceImpl implements OpportunityService {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
         return null;
     }
-
+    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
     public List<Opportunity> getAll() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.getAll();
+
+    }
+    public List<Opportunity> getAllFallback(Exception e) throws NoSuchElementException{
+        throw new NoSuchElementException("The are no opportunities in database");
+
     }
 
     public Opportunity obtainOpportunity(Contact contact, SalesRep salesRep) {

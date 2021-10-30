@@ -1,7 +1,6 @@
 package com.ironhack.edgeservice.controller.impl;
 
 import com.ironhack.edgeservice.controller.interfaces.ContactController;
-import com.ironhack.edgeservice.dto.ContactDTO;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.service.interfaces.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
