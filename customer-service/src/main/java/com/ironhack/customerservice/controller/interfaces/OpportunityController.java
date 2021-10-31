@@ -9,4 +9,6 @@ public interface OpportunityController {
     List<Opportunity> getAll();
     Opportunity getById(Long opportunityId);
     Opportunity add(OpportunityDTO opportunity);
+    String closeLost(Long id);
+    String closeWon(Long id);
 }

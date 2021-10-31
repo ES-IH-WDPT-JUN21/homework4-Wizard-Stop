@@ -50,4 +50,13 @@ public interface ContAccOppServiceClient {
 
     @PostMapping("/opportunities")
     public Opportunity add(@Valid @RequestBody OpportunityDTO opportunity);
+
+    @GetMapping("/opportunities/closelost/{id}")
+    public String closeLost(@PathVariable(name = "id") Long id);
+
+    @GetMapping("/opportunities/closewon/{id}")
+    public String closeWon(@PathVariable(name = "id") Long id);
+
+    @GetMapping("/opportunities_by_sales_rep")
+    public List<Object[]> showOpportunitiesBySalesRep();
 }

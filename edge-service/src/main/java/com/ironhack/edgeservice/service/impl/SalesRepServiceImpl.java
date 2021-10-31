@@ -1,6 +1,7 @@
 package com.ironhack.edgeservice.service.impl;
 
 
+import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
 import com.ironhack.edgeservice.model.SalesRep;
 import com.ironhack.edgeservice.service.interfaces.SalesRepService;
@@ -17,6 +18,9 @@ public class SalesRepServiceImpl implements SalesRepService {
 
     @Autowired
     SalesRepServiceClient salesRepServiceClient;
+
+    @Autowired
+    ContAccOppServiceClient contAccOppServiceClient;
 
     public void save(SalesRep salesRep) {
         //LLAMADA A MICROSERVICIO SALESREP
@@ -47,8 +51,10 @@ public class SalesRepServiceImpl implements SalesRepService {
         return null;
     }
     public List<Object[]> showOpportunitiesBySalesRep(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
+        List<Object[]> opportunitiesList = contAccOppServiceClient.showOpportunitiesBySalesRep();
+        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+        return opportunitiesList;
+
     }
     public List<Object[]> showClosedWonOpportunitiesBySalesRep(){
         //LLAMADA A MICROSERVICIO SALESREP

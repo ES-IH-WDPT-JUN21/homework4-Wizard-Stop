@@ -22,7 +22,6 @@ public class Opportunity {
     private Contact decisionMaker;
 
     @Enumerated(EnumType.STRING)
-    @JsonBackReference
     private Status status;
     private Long salesRepId;
 

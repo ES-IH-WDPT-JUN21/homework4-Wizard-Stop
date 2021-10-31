@@ -46,14 +46,14 @@ public class AccountServiceImpl implements AccountService {
             return optionalAccount.get();
         } else {
             Account account = new Account();
-            Contact contact = contactRepository.getById(accountDTO.getContactId());
-            Opportunity opportunity = opportunityRepository.getById(accountDTO.getOpportunityId());
+//            Contact contact = contactRepository.getById(accountDTO.getContactId());
+//            Opportunity opportunity = opportunityRepository.getById(accountDTO.getOpportunityId());
             account.setCity(accountDTO.getCity());
             account.setCountry(accountDTO.getCountry());
             account.setIndustry(accountDTO.getIndustry());
             account.setEmployeeCount(accountDTO.getEmployeeCount());
-            account.getContacts().add(contact);
-            account.getOpportunities().add(opportunity);
+//            account.getContacts().add(contact);
+//            account.getOpportunities().add(opportunity);
 
             return accountRepository.save(account);
         }

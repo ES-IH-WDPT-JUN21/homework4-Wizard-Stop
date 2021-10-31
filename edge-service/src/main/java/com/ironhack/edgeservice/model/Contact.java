@@ -13,8 +13,8 @@ public class Contact {
     private String phoneNumber;
     private String email;
     private String companyName;
-    private Account account;
-    private List<Opportunity> opportunities;
+//    private Account account;
+//    private List<Opportunity> opportunities;
 
     public Contact() {
     }
@@ -26,13 +26,13 @@ public class Contact {
         this.companyName = companyName;
     }
 
-    public Contact(String name, String phoneNumber, String email, String companyName, Account account) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.companyName = companyName;
-        this.account = account;
-    }
+//    public Contact(String name, String phoneNumber, String email, String companyName, Account account) {
+//        this.name = name;
+//        this.phoneNumber = phoneNumber;
+//        this.email = email;
+//        this.companyName = companyName;
+//        this.account = account;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,45 +88,45 @@ public class Contact {
         return id;
     }
 
-    public Account getContact() {
-        return account;
-    }
-
-    public void setContact(Account account) {
-        this.account = account;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public List<Opportunity> getOpportunities() {
-        return opportunities;
-    }
-
-    public void setOpportunities(List<Opportunity> opportunities) {
-        this.opportunities = opportunities;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", companyName='" + companyName + '\'' +
-                '}';
-    }
-
-    public String toStringFormatted() {
-        return "Name: " + name +
-                " | Phone Number: " + phoneNumber  +
-                " | Email: " + email +
-                " | Company Name: " + companyName;
-    }
+//    public Account getContact() {
+//        return account;
+//    }
+//
+//    public void setContact(Account account) {
+//        this.account = account;
+//    }
+//
+//    public Account getAccount() {
+//        return account;
+//    }
+//
+//    public void setAccount(Account account) {
+//        this.account = account;
+//    }
+//
+//    public List<Opportunity> getOpportunities() {
+//        return opportunities;
+//    }
+//
+//    public void setOpportunities(List<Opportunity> opportunities) {
+//        this.opportunities = opportunities;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "{" +
+//                "name='" + name + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", email='" + email + '\'' +
+//                ", companyName='" + companyName + '\'' +
+//                '}';
+//    }
+//
+//    public String toStringFormatted() {
+//        return "Name: " + name +
+//                " | Phone Number: " + phoneNumber  +
+//                " | Email: " + email +
+//                " | Company Name: " + companyName;
+//    }
 }
 

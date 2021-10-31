@@ -5,7 +5,9 @@ import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.service.interfaces.ContactService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.InvalidParameterException;
 import java.util.List;
@@ -28,8 +30,8 @@ public class ContactServiceImpl implements ContactService {
             return contAccOppServiceClient.contact(id);
     }
 
-    public Contact findByIdFallback(Long id, Exception e) throws NoSuchElementException {
-        throw new NoSuchElementException("The ID " + id + " does not match with any contact");
+    public Contact findByIdFallback(Long id, Exception e) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public void save(Contact contact) {

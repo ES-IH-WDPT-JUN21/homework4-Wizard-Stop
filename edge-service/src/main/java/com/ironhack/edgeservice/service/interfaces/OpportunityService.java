@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public interface OpportunityService {
-    Opportunity findById(Long id)  throws InvalidParameterException, NoSuchElementException;
+    Opportunity findById(Long id);
 
     void delete(Long id) throws InvalidParameterException, NoSuchElementException;
 
@@ -24,9 +24,9 @@ public interface OpportunityService {
 
     Opportunity obtainOpportunity(Contact contact, SalesRep salesRep);
 
-    int closeLost(Long id) throws InvalidParameterException, NoSuchElementException;
+    String closeLost(Long id);
 
-    int closeWon(Long id) throws InvalidParameterException, NoSuchElementException;
+    String closeWon(Long id);
 
     List<Object[]> opportunitiesByProduct();
     List<Object[]> openOpportunitiesByProduct();

@@ -78,7 +78,7 @@ class AccountControllerImplTest {
 
     @Test
     void store_validAccount_accountCreated() throws Exception {
-        AccountDTO account4 = new AccountDTO(4L, Industry.MEDICAL, 21, "Vigo", "España", 4L, 4L);
+        AccountDTO account4 = new AccountDTO(4L, Industry.MEDICAL, 21, "Vigo", "España");
         String body = objectMapper.writeValueAsString(account4);
         MvcResult mvcResult = mockMvc.perform(post("/accounts")
                 .content(body)

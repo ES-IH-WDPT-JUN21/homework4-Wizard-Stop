@@ -1,6 +1,7 @@
 package com.ironhack.customerservice.service.impl;
 
 import com.ironhack.customerservice.controller.dto.OpportunityDTO;
+import com.ironhack.customerservice.enums.Status;
 import com.ironhack.customerservice.model.Account;
 import com.ironhack.customerservice.model.Contact;
 import com.ironhack.customerservice.model.Opportunity;
@@ -60,6 +61,38 @@ public class OpportunityServiceImpl implements OpportunityService {
             opportunityNew.setDecisionMaker(contact);
 
             return opportunityRepository.save(opportunityNew);
+        }
+    }
+
+    @Override
+    public String closeLost(Long id) {
+        Optional<Opportunity> optionalOpportunity = opportunityRepository.findById(id);
+        if (optionalOpportunity.isPresent()){
+            if (optionalOpportunity.get().getStatus().equals(Status.OPEN)) {
+                optionalOpportunity.get().setStatus(Status.CLOSED_LOST);
+                opportunityRepository.save(optionalOpportunity.get());
+                return ("Opportunity " + id + " has been changed to Close-Lost");
+            } else {
+                return ("Opportunity " + id + " status cannot be changed");
+            }
+        }else{
+            return ("Opportunity " + id + " not found");
+        }
+    }
+
+    @Override
+    public String closeWon(Long id) {
+        Optional<Opportunity> optionalOpportunity = opportunityRepository.findById(id);
+        if (optionalOpportunity.isPresent()){
+            if (optionalOpportunity.get().getStatus().equals(Status.OPEN)) {
+                optionalOpportunity.get().setStatus(Status.CLOSED_WON);
+                opportunityRepository.save(optionalOpportunity.get());
+                return ("Opportunity " + id + " has been changed to Close-Lost");
+            } else {
+                return ("Opportunity " + id + " status cannot be changed");
+            }
+        }else{
+            return ("Opportunity " + id + " not found");
         }
     }
 }

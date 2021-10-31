@@ -132,7 +132,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public List<Account> getAll() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.getAllAccounts();
     }
 }

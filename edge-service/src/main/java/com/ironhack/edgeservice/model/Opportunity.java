@@ -1,4 +1,5 @@
 package com.ironhack.edgeservice.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ironhack.edgeservice.enums.Product;
 import com.ironhack.edgeservice.enums.Status;
 
@@ -84,17 +85,17 @@ public class Opportunity {
         this.status = status;
     }
 
-    public SalesRep getSalesRep() {
-        return salesRep;
-    }
+//    public SalesRep getSalesRep() {
+//        return salesRep;
+//    }
 
     public void setSalesRep(SalesRep salesRep) {
         this.salesRep = salesRep;
     }
 
-    public Account getAccount() {
-        return account;
-    }
+//    public Account getAccount() {
+//        return account;
+//    }
 
     public void setAccount(Account account) {
         this.account = account;

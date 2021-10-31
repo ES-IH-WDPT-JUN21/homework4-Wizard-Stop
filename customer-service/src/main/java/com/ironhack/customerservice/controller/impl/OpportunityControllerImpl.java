@@ -34,4 +34,16 @@ public class OpportunityControllerImpl implements OpportunityController {
     public Opportunity add(@Valid @RequestBody OpportunityDTO opportunity){
         return opportunityService.add(opportunity);
     }
+
+    @GetMapping("/opportunities/closelost/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String closeLost(@PathVariable(name = "id") Long id) {
+        return opportunityService.closeLost(id);
+    }
+
+    @GetMapping("/opportunities/closewon/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String closeWon(@PathVariable(name = "id") Long id) {
+        return opportunityService.closeWon(id);
+    }
 }

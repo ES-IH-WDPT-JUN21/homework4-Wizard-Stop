@@ -2,6 +2,7 @@ package com.ironhack.edgeservice.service.impl;
 
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
+import com.ironhack.edgeservice.enums.Status;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.model.Opportunity;
@@ -9,7 +10,9 @@ import com.ironhack.edgeservice.model.SalesRep;
 import com.ironhack.edgeservice.service.interfaces.OpportunityService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.security.InvalidParameterException;
@@ -23,9 +26,13 @@ public class OpportunityServiceImpl implements OpportunityService {
     @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
 
+    @CircuitBreaker(name = "findById", fallbackMethod = "findByIdFallback")
     public Opportunity findById(Long id) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.getById(id);
+    }
+
+    public Opportunity findByIdFallback(Long id, Exception e) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public void delete(Long id) {
@@ -40,29 +47,27 @@ public class OpportunityServiceImpl implements OpportunityService {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
         return null;
     }
-    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
+//    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
     public List<Opportunity> getAll() {
         return contAccOppServiceClient.getAll();
 
     }
-    public List<Opportunity> getAllFallback(Exception e) throws NoSuchElementException{
-        throw new NoSuchElementException("The are no opportunities in database");
-
-    }
+//    public String getAllFallback(Exception e) throws NoSuchElementException{
+//        return e.getMessage();
+//
+//    }
 
     public Opportunity obtainOpportunity(Contact contact, SalesRep salesRep) {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
         return null;
     }
 
-    public int closeLost(Long id) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return -9;
+    public String closeLost(Long id) {
+    return contAccOppServiceClient.closeLost(id);
     }
 
-    public int closeWon(Long id) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return -10;
+    public String closeWon(Long id) {
+        return contAccOppServiceClient.closeWon(id);
 
     }
 
