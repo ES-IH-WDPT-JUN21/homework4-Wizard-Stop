@@ -3,9 +3,13 @@ package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.LeadServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
 import com.ironhack.edgeservice.model.Lead;
+import com.ironhack.edgeservice.model.Opportunity;
 import com.ironhack.edgeservice.service.interfaces.LeadService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -19,9 +23,13 @@ public class LeadServiceImpl implements LeadService {
     @Autowired
     SalesRepServiceClient salesRepServiceClient;
 
-    public Lead findById(Long id){
-        //LLAMADA A MICROSERVICIO LEAD
-        return null;
+    @CircuitBreaker(name = "findById", fallbackMethod = "findByIdFallback")
+    public Lead findById(Long id) {
+        return leadServiceClient.getLeadById(id);
+    }
+
+    public Lead findByIdFallback(Long id, Exception e) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public void deleteById(Long id)  {
@@ -35,8 +43,7 @@ public class LeadServiceImpl implements LeadService {
     }
 
     public List<Lead> getAll() {
-        //LLAMADA A MICROSERVICIO LEAD
-        return null;
+        return leadServiceClient.getAllLeads();
     }
 
     public Lead createLead() {

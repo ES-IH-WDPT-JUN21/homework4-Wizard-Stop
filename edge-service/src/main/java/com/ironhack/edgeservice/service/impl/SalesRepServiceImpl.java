@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.service.impl;
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
+import com.ironhack.edgeservice.model.Opportunity;
 import com.ironhack.edgeservice.model.SalesRep;
 import com.ironhack.edgeservice.service.interfaces.SalesRepService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,7 @@ public class SalesRepServiceImpl implements SalesRepService {
     }
 
     public List<SalesRep> getAll(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
+        return salesRepServiceClient.getAllSalesRep();
     }
 
     public List<Object[]> showLeadsBySalesRep(){
