@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Account {
 
-
     private Long id;
     private Industry industry;
     private int employeeCount;
@@ -14,7 +13,6 @@ public class Account {
     private String country;
     private List<Contact> contacts;
     private List<Opportunity> opportunities;
-
 
     public Account() {
     }

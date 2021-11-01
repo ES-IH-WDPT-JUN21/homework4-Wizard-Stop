@@ -18,20 +18,13 @@ import java.util.NoSuchElementException;
 
 @RestController
 public class LeadControllerImpl implements LeadController {
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
-    @Autowired
-    private LeadRepository leadRepository;
 
     @Autowired
     private LeadService leadService;
 
-
     @GetMapping("/leads/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Lead getLeadById(@PathVariable(name = "id") long id) throws ResponseStatusException{
-
+    public Lead getLeadById(@PathVariable(name = "id") long id) {
         return leadService.getLeadById(id);
     }
 
@@ -50,8 +43,7 @@ public class LeadControllerImpl implements LeadController {
 
     @DeleteMapping("/leads/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String deleteLeadById(@PathVariable(name = "id") long id) throws ResponseStatusException {
-
+    public String deleteLeadById(@PathVariable(name = "id") long id) {
         return leadService.deleteLeadById(id);
     }
 

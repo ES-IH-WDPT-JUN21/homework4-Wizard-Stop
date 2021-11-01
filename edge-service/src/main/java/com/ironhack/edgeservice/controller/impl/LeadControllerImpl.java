@@ -37,8 +37,8 @@ public class LeadControllerImpl implements LeadController {
 
     @DeleteMapping("/leads/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteLeadById(@PathVariable(name = "id") long id) {
-        leadService.deleteById(id);
+    public String deleteLeadById(@PathVariable(name = "id") long id) {
+        return leadService.deleteById(id);
     }
 
 }

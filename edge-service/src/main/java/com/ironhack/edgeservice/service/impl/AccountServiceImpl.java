@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
    @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
 
-    private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     public Account findById(Long id)  {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY

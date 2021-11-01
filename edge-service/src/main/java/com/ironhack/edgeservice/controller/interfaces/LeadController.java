@@ -10,6 +10,6 @@ public interface LeadController {
     Lead getLeadById(long id);
     List<Lead> getAllLeads();
     LeadDTO saveNewLead(LeadDTO leadDTO);
-    void deleteLeadById(long id);
+    String deleteLeadById(long id);
 
 }

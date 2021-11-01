@@ -1,23 +1,15 @@
 package com.ironhack.edgeservice.model;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
-
 public class SalesRep {
 
     private Long id;
     private String name;
-    private List<Lead> leads;
-    private List<Opportunity> opportunities;
 
     public SalesRep() {
     }
 
-    public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities) {
+    public SalesRep(String name) {
         this.name = name;
-        this.leads = leads;
-        this.opportunities = opportunities;
     }
 
     public Long getId() {
@@ -36,19 +28,4 @@ public class SalesRep {
         this.name = name;
     }
 
-    public List<Lead> getLeads() {
-        return leads;
-    }
-
-    public void setLeads(List<Lead> leads) {
-        this.leads = leads;
-    }
-
-    public List<Opportunity> getOpportunities() {
-        return opportunities;
-    }
-
-    public void setOpportunities(List<Opportunity> opportunities) {
-        this.opportunities = opportunities;
-    }
 }

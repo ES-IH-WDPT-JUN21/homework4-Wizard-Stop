@@ -24,7 +24,7 @@ public class ContactServiceImpl implements ContactService {
     @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
 
-    private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(ContactServiceImpl.class);
 
     public void delete(Long id) throws InvalidParameterException, NoSuchElementException {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY

@@ -3,10 +3,7 @@ package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.LeadServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
 import com.ironhack.edgeservice.controller.dto.LeadDTO;
-import com.ironhack.edgeservice.enums.Industry;
-import com.ironhack.edgeservice.model.Account;
-import com.ironhack.edgeservice.model.Lead;
-import com.ironhack.edgeservice.model.SalesRep;
+import com.ironhack.edgeservice.model.*;
 import com.ironhack.edgeservice.service.interfaces.LeadService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
@@ -19,7 +16,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class LeadServiceImpl implements LeadService {
 
@@ -29,7 +25,7 @@ public class LeadServiceImpl implements LeadService {
     @Autowired
     SalesRepServiceClient salesRepServiceClient;
 
-    private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(LeadServiceImpl.class);
 
     @CircuitBreaker(name = "findById", fallbackMethod = "findByIdFallback")
     public Lead findById(Long id) {
@@ -44,15 +40,14 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        SalesRep salesRep = new SalesRep("Gemma");
-        salesRep.setId(1L);
-        Lead lead = new Lead("Tomás", "345987456", "tomaso@gmail.com", "LoadBalancer", salesRep);
-        lead.setId(1L);
-        return lead;
+        Lead newLead = new Lead("Tomás", "345987456", "tomaso@gmail.com", "LoadBalancer");
+        newLead.setId(24L);
+        return newLead;
     }
 
-    public void deleteById(Long id)  {
+    public String deleteById(Long id)  {
         //LLAMADA A MICROSERVICIO LEAD
+        return null;
     }
 
     public LeadDTO save(LeadDTO lead)  {
@@ -75,13 +70,12 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        Lead lead = new Lead("Fiona", "357087245", "fio_na@gmail.com", "Meredith");
-        lead.setId(1L);
+        Lead newLead = new Lead("Fiona", "357087245", "fio_na@gmail.com", "Meredith");
+        newLead.setId(2L);
         List<Lead> list = new ArrayList<>();
-        list.add(lead);
+        list.add(newLead);
         return list;
     }
-
 
     public Lead createLead() {
         //LLAMADA A MICROSERVICIO LEAD
