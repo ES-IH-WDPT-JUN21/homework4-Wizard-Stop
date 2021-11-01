@@ -13,6 +13,6 @@ public interface LeadService {
     String deleteById(Long id);
     LeadDTO save(LeadDTO leadDTO);
     List<Lead> getAll();
-    Lead createLead();
+//    Lead createLead();
     void convertLead();
 }

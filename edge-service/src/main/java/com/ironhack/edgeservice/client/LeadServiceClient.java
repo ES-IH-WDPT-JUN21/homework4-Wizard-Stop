@@ -15,9 +15,10 @@ public interface LeadServiceClient {
     @GetMapping("/leads")
     public List<Lead> getAllLeads();
 
+    // este no devuelve nada. en el servicio lead devuelve el lead que se ha creado
     @PostMapping("/leads")
     public LeadDTO saveNewLead(@RequestBody LeadDTO leadDTO);
 
-    @DeleteMapping("/leads/{id}")
+    @DeleteMapping("/leads/{id}") // no funciona
     public String deleteLeadById(@PathVariable(name = "id") long id);
 }
