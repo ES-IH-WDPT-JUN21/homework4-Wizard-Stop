@@ -14,8 +14,10 @@ public class SalesRep {
     public SalesRep() {
     }
 
-    public SalesRep(String name) {
-        setName(name);
+    public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities) {
+        this.name = name;
+        this.leads = leads;
+        this.opportunities = opportunities;
     }
 
     public Long getId() {

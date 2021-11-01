@@ -19,13 +19,17 @@ public class OpportunityControllerImpl implements OpportunityController {
 
     @GetMapping("/opportunities")
     @ResponseStatus(HttpStatus.OK)
-    public List<Opportunity> getAll(){
+    public List<Opportunity> getAll() {
+        //Thread.sleep(3000);
+
         return opportunityService.getAll();
     }
 
     @GetMapping("/opportunities/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Opportunity getById(@PathVariable(name = "id") Long opportunityId){
+    public Opportunity getById(@PathVariable(name = "id") Long opportunityId) {
+        //Thread.sleep(3000);
+
         return opportunityService.getById(opportunityId);
     }
 

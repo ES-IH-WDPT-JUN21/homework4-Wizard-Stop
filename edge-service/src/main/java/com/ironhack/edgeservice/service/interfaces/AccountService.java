@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.service.interfaces;
 
+import com.ironhack.edgeservice.controller.dto.AccountDTO;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.model.Opportunity;
@@ -12,7 +13,7 @@ public interface AccountService {
 
     void delete(Long id) throws InvalidParameterException, NoSuchElementException;
 
-    void save(Account account);
+    Account save(AccountDTO account);
 
     Account obtainAccount(Contact contact, Opportunity opportunity);
 

@@ -1,11 +1,20 @@
 package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
+import com.ironhack.edgeservice.controller.dto.AccountDTO;
+import com.ironhack.edgeservice.enums.Industry;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.model.Opportunity;
 import com.ironhack.edgeservice.service.interfaces.AccountService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,6 +23,8 @@ public class AccountServiceImpl implements AccountService {
 
    @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
+
+    private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
 
     public Account findById(Long id)  {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
@@ -24,8 +35,9 @@ public class AccountServiceImpl implements AccountService {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
     }
 
-    public void save(Account account)  {
+    public Account save(AccountDTO account)  {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+        return null;
     }
 
     public Account obtainAccount(Contact contact, Opportunity opportunity){
@@ -131,7 +143,23 @@ public class AccountServiceImpl implements AccountService {
         return null;
     }
 
+    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
     public List<Account> getAll() {
         return contAccOppServiceClient.getAllAccounts();
+    }
+
+    public List<Account> getAllFallback(Exception e) {
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+
+        Account account = new Account(Industry.ECOMMERCE, 12, "Barcelona", "España");
+        account.setId(1L);
+        List<Account> list = new ArrayList<>();
+        list.add(account);
+        return list;
     }
 }

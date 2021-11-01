@@ -2,7 +2,7 @@ package com.ironhack.edgeservice.service.impl;
 
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
-import com.ironhack.edgeservice.enums.Status;
+import com.ironhack.edgeservice.enums.Product;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
 import com.ironhack.edgeservice.model.Opportunity;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
-import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class OpportunityServiceImpl implements OpportunityService {
@@ -26,13 +26,29 @@ public class OpportunityServiceImpl implements OpportunityService {
     @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
 
+    private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
+
     @CircuitBreaker(name = "findById", fallbackMethod = "findByIdFallback")
     public Opportunity findById(Long id) {
         return contAccOppServiceClient.getById(id);
     }
 
     public Opportunity findByIdFallback(Long id, Exception e) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+
+        //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
+        Contact contact = new Contact("Mario", "345788543", "marioo@gmail.com", "Nosep");
+        contact.setId(1L);
+        Opportunity opportunity = new Opportunity(Product.BOX, 12, contact);
+        opportunity.setId(1L);
+        return opportunity;
+
+        //throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public void delete(Long id) {
@@ -47,15 +63,29 @@ public class OpportunityServiceImpl implements OpportunityService {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
         return null;
     }
-//    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
+
+    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
     public List<Opportunity> getAll() {
         return contAccOppServiceClient.getAll();
-
     }
-//    public String getAllFallback(Exception e) throws NoSuchElementException{
-//        return e.getMessage();
-//
-//    }
+
+    public List<Opportunity> getAllFallback(Exception e) {
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+
+        //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
+        Contact contact = new Contact("Mario", "345788543", "marioo@gmail.com", "Nosep");
+        contact.setId(1L);
+        Opportunity opportunity = new Opportunity(Product.BOX, 12, contact);
+        opportunity.setId(1L);
+        List<Opportunity> list = new ArrayList<>();
+        list.add(opportunity);
+        return list;
+    }
 
     public Opportunity obtainOpportunity(Contact contact, SalesRep salesRep) {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
