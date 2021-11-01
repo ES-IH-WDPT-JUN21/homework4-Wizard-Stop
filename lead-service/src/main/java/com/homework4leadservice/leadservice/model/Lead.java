@@ -13,7 +13,6 @@ import java.util.Scanner;
 @Table(name="`lead`")
 public class Lead {
     @Id
-    @NotEmpty
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Valid
