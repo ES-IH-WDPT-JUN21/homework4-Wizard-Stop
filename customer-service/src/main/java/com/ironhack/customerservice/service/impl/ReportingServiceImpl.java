@@ -19,21 +19,45 @@ public class ReportingServiceImpl implements ReportingService {
         return report;
     }
 
-//    @Override
-//    public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
-//        List<Object[]> report = opportunityRepository.closedWonOpportunitiesBySalesRep();
-//        return report;
-//    }
-//
-//    @Override
-//    public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
-//        List<Object[]> report = opportunityRepository.closedLostOpportunitiesBySalesRep();
-//        return report;
-//    }
-//
-//    @Override
-//    public List<Object[]> showOpenOpportunitiesBySalesRep() {
-//        List<Object[]> report = opportunityRepository.openOpportunitiesBySalesRep();
-//        return report;
-//    }
+    @Override
+    public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
+        List<Object[]> report = opportunityRepository.closedWonOpportunitiesBySalesRep();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
+        List<Object[]> report = opportunityRepository.closedLostOpportunitiesBySalesRep();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> showOpenOpportunitiesBySalesRep() {
+        List<Object[]> report = opportunityRepository.openOpportunitiesBySalesRep();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> opportunitiesByProduct() {
+        List<Object[]> report = opportunityRepository.opportunitiesByProduct();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> openOpportunitiesByProduct() {
+        List<Object[]> report = opportunityRepository.openOpportunitiesByProduct();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> wonOpportunitiesByProduct() {
+        List<Object[]> report = opportunityRepository.wonOpportunitiesByProduct();
+        return report;
+    }
+
+    @Override
+    public List<Object[]> lostOpportunitiesByProduct() {
+        List<Object[]> report = opportunityRepository.lostOpportunitiesByProduct();
+        return report;
+    }
 }

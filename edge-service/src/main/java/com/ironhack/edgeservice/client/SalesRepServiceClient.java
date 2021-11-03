@@ -13,6 +13,7 @@ import java.util.List;
 
 @FeignClient("salesrep-service")
 public interface SalesRepServiceClient {
+
     @GetMapping("/salesrep/{id}")
     public SalesRep getSalesRepById(@PathVariable Long id);
 

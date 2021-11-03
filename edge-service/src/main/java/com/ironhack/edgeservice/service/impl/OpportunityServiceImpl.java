@@ -101,24 +101,38 @@ public class OpportunityServiceImpl implements OpportunityService {
 
     }
 
+    public List<Object[]> showOpportunitiesBySalesRep(){
+        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+        return contAccOppServiceClient.showOpportunitiesBySalesRep();
+
+    }
+    public List<Object[]> showClosedWonOpportunitiesBySalesRep(){
+        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+        return contAccOppServiceClient.showClosedWonOpportunitiesBySalesRep();
+    }
+    public List<Object[]> showClosedLostOpportunitiesBySalesRep(){
+        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+        return contAccOppServiceClient.showClosedLostOpportunitiesBySalesRep();
+    }
+    public List<Object[]> showOpenOpportunitiesBySalesRep(){
+        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+        return contAccOppServiceClient.showOpenOpportunitiesBySalesRep();
+    }
+
     public List<Object[]> opportunitiesByProduct() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.opportunitiesByProduct();
     }
 
     public List<Object[]> openOpportunitiesByProduct() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.openOpportunitiesByProduct();
     }
 
     public List<Object[]> wonOpportunitiesByProduct() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.wonOpportunitiesByProduct();
     }
 
     public List<Object[]> lostOpportunitiesByProduct() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.lostOpportunitiesByProduct();
     }
 
     public List<Object[]> opportunitiesByCountry() {

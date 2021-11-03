@@ -19,8 +19,5 @@ public interface SalesRepService {
     List<SalesRep> getAll();
 
     List<Object[]> showLeadsBySalesRep();
-    List<Object[]> showOpportunitiesBySalesRep();
-    List<Object[]> showClosedWonOpportunitiesBySalesRep();
-    List<Object[]> showClosedLostOpportunitiesBySalesRep();
-    List<Object[]> showOpenOpportunitiesBySalesRep();
+
 }

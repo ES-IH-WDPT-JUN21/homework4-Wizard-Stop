@@ -156,7 +156,7 @@ public class AccountServiceImpl implements AccountService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        Account account = new Account(Industry.ECOMMERCE, 12, "Barcelona", "España");
+        Account account = new Account(Industry.ECOMMERCE, 0, "Dummy", "");
         account.setId(1L);
         List<Account> list = new ArrayList<>();
         list.add(account);

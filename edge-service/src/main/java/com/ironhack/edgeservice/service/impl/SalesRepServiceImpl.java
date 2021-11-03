@@ -59,8 +59,8 @@ public class SalesRepServiceImpl implements SalesRepService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        SalesRep salesRep = new SalesRep("Gloria");
-        salesRep.setId(30L);
+        SalesRep salesRep = new SalesRep("Dummy");
+        salesRep.setId(-1L);
         List<SalesRep> list = new ArrayList<>();
         list.add(salesRep);
         return list;
@@ -71,22 +71,4 @@ public class SalesRepServiceImpl implements SalesRepService {
         return null;
     }
 
-    public List<Object[]> showOpportunitiesBySalesRep(){
-        List<Object[]> opportunitiesList = contAccOppServiceClient.showOpportunitiesBySalesRep();
-        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
-        return opportunitiesList;
-
-    }
-    public List<Object[]> showClosedWonOpportunitiesBySalesRep(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
-    }
-    public List<Object[]> showClosedLostOpportunitiesBySalesRep(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
-    }
-    public List<Object[]> showOpenOpportunitiesBySalesRep(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
-    }
 }

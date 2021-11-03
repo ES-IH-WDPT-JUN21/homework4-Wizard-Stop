@@ -16,20 +16,14 @@ public class SalesRepControllerImpl implements SalesRepController {
     @Autowired
     private SalesRepService salesRepService;
 
-    @GetMapping("/opportunities_by_sales_rep")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Object[]> showOpportunitiesBySalesRep() {
-        return salesRepService.showOpportunitiesBySalesRep();
-    }
-
     @GetMapping("/salesrep/{id}")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public SalesRep getSalesRepById(@PathVariable Long id){
         return salesRepService.findById(id);
     }
 
-    @GetMapping("/salesrep/all")
-    @ResponseStatus(HttpStatus.FOUND)
+    @GetMapping("/salesrep")
+    @ResponseStatus(HttpStatus.OK)
     public List<SalesRep> getAllSalesRep(){
         return salesRepService.getAll();
     }

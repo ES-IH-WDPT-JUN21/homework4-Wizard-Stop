@@ -15,7 +15,7 @@ public class Opportunity {
     private int quantity;
     private Contact decisionMaker;
     private Status status;
-    private SalesRep salesRep;
+    private Long salesRepId;
     private Account account;
 
     public Opportunity() {
@@ -28,19 +28,19 @@ public class Opportunity {
         this.status = Status.OPEN;
     }
 
-    public Opportunity(Product product, int quantity, Contact decisionMaker, Status status, SalesRep salesRep) {
+    public Opportunity(Product product, int quantity, Contact decisionMaker, Status status, Long salesRepId) {
         this.product = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
         this.status = status;
-        this.salesRep = salesRep;
+        this.salesRepId = salesRepId;
     }
 
-    public Opportunity(Product product, int quantity, Contact decisionMaker, SalesRep salesRep) {
+    public Opportunity(Product product, int quantity, Contact decisionMaker, Long salesRepId ) {
         this.product = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
-        this.salesRep = salesRep;
+        this.salesRepId = salesRepId;
         this.status = Status.OPEN;
 
     }
@@ -85,12 +85,12 @@ public class Opportunity {
         this.status = status;
     }
 
-//    public SalesRep getSalesRep() {
-//        return salesRep;
-//    }
+    public Long getSalesRep() {
+        return salesRepId;
+    }
 
-    public void setSalesRep(SalesRep salesRep) {
-        this.salesRep = salesRep;
+    public void setSalesRep(Long salesRep) {
+        this.salesRepId = salesRepId;
     }
 
 //    public Account getAccount() {

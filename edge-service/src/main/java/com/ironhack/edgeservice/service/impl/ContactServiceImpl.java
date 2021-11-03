@@ -30,7 +30,6 @@ public class ContactServiceImpl implements ContactService {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
     }
 
-    //Ejemplo llamada a microservicio y fallback
     @CircuitBreaker(name = "findById", fallbackMethod = "findByIdFallback")
     public Contact findById(Long id) {
             return contAccOppServiceClient.contact(id);
@@ -44,11 +43,8 @@ public class ContactServiceImpl implements ContactService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        Contact contact = new Contact("Nuria", "345789644", "nuriaa@gmail.com", "Deusto");
-        contact.setId(1L);
-        return contact;
+        return new Contact("Dummy", "", "", "");
 
-        //throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public ContactDTO save(ContactDTO contact) {

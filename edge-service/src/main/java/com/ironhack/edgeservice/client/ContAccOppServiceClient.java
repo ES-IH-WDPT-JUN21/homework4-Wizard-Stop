@@ -59,4 +59,25 @@ public interface ContAccOppServiceClient {
 
     @GetMapping("/opportunities_by_sales_rep")
     public List<Object[]> showOpportunitiesBySalesRep();
+
+    @GetMapping("/closewon_opportunities_by_sales_rep")
+    public List<Object[]> showClosedWonOpportunitiesBySalesRep();
+
+    @GetMapping("/closelost_opportunities_by_sales_rep")
+    public List<Object[]> showClosedLostOpportunitiesBySalesRep();
+
+    @GetMapping("/open_opportunities_by_sales_rep")
+    public List<Object[]> showOpenOpportunitiesBySalesRep();
+
+    @GetMapping("/opportunities_by_product")
+    public List<Object[]> opportunitiesByProduct();
+
+    @GetMapping("/open_opportunities_by_product")
+    public List<Object[]> openOpportunitiesByProduct();
+
+    @GetMapping("/closewon_opportunities_by_product")
+    public List<Object[]> wonOpportunitiesByProduct();
+
+    @GetMapping("/closelost_opportunities_by_product")
+    public List<Object[]> lostOpportunitiesByProduct();
 }

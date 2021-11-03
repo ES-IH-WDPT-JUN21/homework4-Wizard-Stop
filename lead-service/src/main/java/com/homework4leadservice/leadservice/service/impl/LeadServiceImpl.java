@@ -25,30 +25,9 @@ public class LeadServiceImpl implements LeadService {
     // pendiente de verificar el id del salesrep en el edge
     @Override
     public LeadDTO saveNewLead(LeadDTO leadDTO) throws ResponseStatusException {
-        if (leadDTO.getId() != null) {
-            if (leadDTO.getId() < 1) {
-                throw new InvalidParameterException();
-            }
-            Optional<Lead> optionalLead = leadRepository.findById(leadDTO.getId());
-            if (optionalLead.isPresent()) {
-                throw new ResponseStatusException(HttpStatus.FORBIDDEN, "The ID" + leadDTO.getId() + "already exists in the leads Database");
 
-
-            } else {
-
-
-                Lead lead = new Lead();
-                lead.setId(leadDTO.getId());
-                lead.setName(leadDTO.getName());
-                lead.setPhoneNumber(leadDTO.getPhoneNumber());
-                lead.setEmail(leadDTO.getEmail());
-                lead.setCompanyName(leadDTO.getCompanyName());
-                lead.setSalesRep(leadDTO.getSalesRep());
+                Lead lead = new Lead(leadDTO.getName(),leadDTO.getPhoneNumber(), leadDTO.getEmail(), leadDTO.getCompanyName(),leadDTO.getSalesRep());
                 leadRepository.save(lead);
-
-
-            }
-        }
 
         return leadDTO;
     }

@@ -28,10 +28,15 @@ public interface OpportunityService {
 
     String closeWon(Long id);
 
+    List<Object[]> showOpportunitiesBySalesRep();
+    List<Object[]> showClosedWonOpportunitiesBySalesRep();
+    List<Object[]> showClosedLostOpportunitiesBySalesRep();
+    List<Object[]> showOpenOpportunitiesBySalesRep();
     List<Object[]> opportunitiesByProduct();
     List<Object[]> openOpportunitiesByProduct();
     List<Object[]> wonOpportunitiesByProduct();
     List<Object[]> lostOpportunitiesByProduct();
+
     List<Object[]> opportunitiesByCountry();
     List<Object[]> openOpportunitiesByCountry();
     List<Object[]> wonOpportunitiesByCountry();

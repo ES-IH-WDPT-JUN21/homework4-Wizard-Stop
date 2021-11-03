@@ -48,9 +48,7 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        Lead newLead = new Lead("Tomás", "345987456", "tomaso@gmail.com", "LoadBalancer");
-        newLead.setId(24L);
-        return newLead;
+        return new Lead("Dummy", "", "", "");
 
     }
 
@@ -95,9 +93,7 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        LeadDTO newLeadDTO = new LeadDTO((long)4, "Marco Antonio", "555446688","marcoantonio@emperador.es", "Emperadores SA", (long)5);
-
-        return newLeadDTO;
+        return new LeadDTO((long)4, "Dummy", "","", "", (long)-1);
     }
 
     // get all leads
@@ -114,8 +110,7 @@ public class LeadServiceImpl implements LeadService {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
             }
 
-            Lead newLead = new Lead("Fiona", "357087245", "fio_na@gmail.com", "Meredith");
-            newLead.setId(2L);
+            Lead newLead = new Lead("Dummy", "", "", "");
             List<Lead> list = new ArrayList<>();
             list.add(newLead);
             return list;

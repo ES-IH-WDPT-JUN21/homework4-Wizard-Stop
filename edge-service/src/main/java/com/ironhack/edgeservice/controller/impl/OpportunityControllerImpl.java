@@ -42,4 +42,52 @@ public class OpportunityControllerImpl implements OpportunityController {
     public String closeWon(@PathVariable (name = "id")Long id) {
         return opportunityService.closeWon(id);
     }
+
+    @GetMapping("/opportunities_by_sales_rep")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> showOpportunitiesBySalesRep() {
+        return opportunityService.showOpportunitiesBySalesRep();
+    }
+
+    @GetMapping("/closewon_opportunities_by_sales_rep")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
+        return opportunityService.showClosedWonOpportunitiesBySalesRep();
+    }
+
+    @GetMapping("/closelost_opportunities_by_sales_rep")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
+        return opportunityService.showClosedLostOpportunitiesBySalesRep();
+    }
+
+    @GetMapping("/open_opportunities_by_sales_rep")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> showOpenOpportunitiesBySalesRep() {
+        return opportunityService.showOpenOpportunitiesBySalesRep();
+    }
+
+    @GetMapping("/opportunities_by_product")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> opportunitiesByProduct() {
+        return opportunityService.opportunitiesByProduct();
+    }
+
+    @GetMapping("/open_opportunities_by_product")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> openOpportunitiesByProduct() {
+        return opportunityService.openOpportunitiesByProduct();
+    }
+
+    @GetMapping("/closewon_opportunities_by_product")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> wonOpportunitiesByProduct() {
+        return opportunityService.wonOpportunitiesByProduct();
+    }
+
+    @GetMapping("/closelost_opportunities_by_product")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> lostOpportunitiesByProduct() {
+        return opportunityService.lostOpportunitiesByProduct();
+    }
 }

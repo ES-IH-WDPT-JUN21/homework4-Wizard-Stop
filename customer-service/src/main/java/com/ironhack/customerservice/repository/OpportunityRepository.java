@@ -15,14 +15,14 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     @Query("SELECT o.salesRepId, COUNT(o) FROM Opportunity o GROUP BY o.salesRepId" )
     List<Object[]> opportunitiesBySalesRep();
 
-//    @Query(value = "SELECT s.name,COUNT((IF(o.status = 'CLOSED_WON',1,null))) as 'CLOSED_WON' FROM sales_rep s LEFT JOIN opportunity o ON s.id = o.sales_rep_id GROUP BY s.name",nativeQuery = true)
-//    List<Object[]> closedWonOpportunitiesBySalesRep();
-//
-//    @Query(value = "SELECT s.name,COUNT((IF(o.status = 'CLOSED_LOST',1,null))) as 'CLOSED_WON' FROM sales_rep s LEFT JOIN opportunity o ON s.id = o.sales_rep_id GROUP BY s.name",nativeQuery = true)
-//    List<Object[]> closedLostOpportunitiesBySalesRep();
-//
-//    @Query(value = "SELECT s.name,COUNT((IF(o.status = 'OPEN',1,null))) as 'CLOSED_WON' FROM sales_rep s LEFT JOIN opportunity o ON s.id = o.sales_rep_id GROUP BY s.name",nativeQuery = true)
-//    List<Object[]> openOpportunitiesBySalesRep();
+    @Query("SELECT o.salesRepId, COUNT(o) FROM Opportunity o WHERE o.status = 'CLOSED_WON' GROUP BY o.salesRepId" )
+    List<Object[]> closedWonOpportunitiesBySalesRep();
+
+    @Query("SELECT o.salesRepId, COUNT(o) FROM Opportunity o WHERE o.status = 'CLOSED_LOST' GROUP BY o.salesRepId" )
+    List<Object[]> closedLostOpportunitiesBySalesRep();
+
+    @Query("SELECT o.salesRepId, COUNT(o) FROM Opportunity o WHERE o.status = 'OPEN' GROUP BY o.salesRepId" )
+    List<Object[]> openOpportunitiesBySalesRep();
 
     @Query("SELECT o.product, COUNT(*) FROM Opportunity o GROUP BY o.product")
     List<Object[]> opportunitiesByProduct();

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface SalesRepController {
 
-    List<Object[]> showOpportunitiesBySalesRep();
     SalesRep getSalesRepById(Long id);
     List<SalesRep> getAllSalesRep();
     void addSalesRep(SalesRep salesRep) throws ExistentElementException;
