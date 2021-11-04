@@ -1,10 +1,6 @@
-DROP SCHEMA IF EXISTS homework;
-CREATE SCHEMA homework;
-USE homework;
-
-DROP SCHEMA IF EXISTS crm_test;
-CREATE SCHEMA crm_test;
-USE crm_test;
+DROP SCHEMA IF EXISTS salesrep;
+CREATE SCHEMA salesrep;
+USE salesrep;
 
 
 DROP TABLE IF EXISTS sales_rep;

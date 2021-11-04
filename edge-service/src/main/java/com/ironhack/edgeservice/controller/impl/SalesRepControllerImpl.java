@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.controller.impl;
 
+import com.ironhack.edgeservice.controller.dto.SalesRepDTO;
 import com.ironhack.edgeservice.controller.interfaces.SalesRepController;
 import com.ironhack.edgeservice.exceptions.ExistentElementException;
 import com.ironhack.edgeservice.model.SalesRep;
@@ -30,8 +31,8 @@ public class SalesRepControllerImpl implements SalesRepController {
 
     @PostMapping("/salesrep")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addSalesRep(@RequestBody SalesRep salesRep) throws ExistentElementException {
-        salesRepService.save(salesRep);
+    public void addSalesRep(@RequestBody SalesRepDTO salesRepDTO) throws ExistentElementException {
+        salesRepService.addSalesRep(salesRepDTO);
     }
 
     @DeleteMapping("/salesrep/{id}")
@@ -39,4 +40,8 @@ public class SalesRepControllerImpl implements SalesRepController {
     public void deleteSalesRep(@PathVariable Long id){
         salesRepService.delete(id);
     }
+
+    @PutMapping("/salesrep")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateSalesRep(@RequestBody SalesRepDTO salesRepDTO){ salesRepService.changeSalesRep(salesRepDTO);}
 }

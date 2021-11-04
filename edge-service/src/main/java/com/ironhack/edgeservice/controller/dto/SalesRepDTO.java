@@ -1,13 +1,13 @@
 package com.ironhack.edgeservice.controller.dto;
 
-public class SalesRepNameDTO {
+public class SalesRepDTO {
     private Long id;
     private String name;
 
-    public SalesRepNameDTO() {
+    public SalesRepDTO() {
     }
 
-    public SalesRepNameDTO(String name) {
+    public SalesRepDTO(String name) {
         this.name = name;
     }
 

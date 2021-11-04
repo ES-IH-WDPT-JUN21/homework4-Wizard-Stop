@@ -1,6 +1,6 @@
 package com.ironhack.salesrep.service.impl;
 
-import com.ironhack.salesrep.dto.SalesRepNameDTO;
+import com.ironhack.salesrep.dto.SalesRepDTO;
 import com.ironhack.salesrep.model.SalesRep;
 import com.ironhack.salesrep.repository.SalesRepRepository;
 import com.ironhack.salesrep.service.interfaces.SalesRepService;
@@ -44,18 +44,18 @@ public class SalesRepServiceImpl implements SalesRepService {
             throw new NoSuchElementException("The ID " + id + " does not match with any SalesRep");
     }
 
-    public void addSalesRep(SalesRepNameDTO salesRepNameDTO){
+    public void addSalesRep(SalesRepDTO salesRepDTO){
         SalesRep salesRep = new SalesRep();
-        salesRep.setName(salesRepNameDTO.getName());
+        salesRep.setName(salesRepDTO.getName());
         salesRepRepository.save(salesRep);
     }
 
-    public void changeSalesRep(Long id, SalesRepNameDTO salesRepNameDTO) {
-        Optional<SalesRep> optionalSalesRep = salesRepRepository.findById(id);
+    public void changeSalesRep(SalesRepDTO salesRepDTO) {
+        Optional<SalesRep> optionalSalesRep = salesRepRepository.findById(salesRepDTO.getId());
         if(optionalSalesRep.isPresent()){
             SalesRep salesRep = new SalesRep();
             salesRep = optionalSalesRep.get();
-            salesRep.setName(salesRepNameDTO.getName());
+            salesRep.setName(salesRepDTO.getName());
             salesRepRepository.save(salesRep);
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);

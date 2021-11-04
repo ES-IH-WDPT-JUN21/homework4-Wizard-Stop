@@ -1,6 +1,6 @@
 package com.ironhack.salesrep.controller.impl;
 import com.ironhack.salesrep.controller.interfaces.SalesRepController;
-import com.ironhack.salesrep.dto.SalesRepNameDTO;
+import com.ironhack.salesrep.dto.SalesRepDTO;
 import com.ironhack.salesrep.model.SalesRep;
 import com.ironhack.salesrep.service.interfaces.SalesRepService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,34 +16,33 @@ public class SalesRepControllerImpl implements SalesRepController {
     private SalesRepService salesRepService;
 
     @GetMapping("/salesrep/{id}")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public SalesRep getSalesRepById(@PathVariable Long id){
        return salesRepService.findById(id);
     }
 
     @GetMapping("/salesrep/all")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public List<SalesRep> getAllSalesRep(){
         return salesRepService.getAll();
     }
 
     @PostMapping("/salesrep")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addSalesRep(@RequestBody SalesRepNameDTO salesRepNameDTO){
-        salesRepService.addSalesRep(salesRepNameDTO);
+    public void addSalesRep(@RequestBody SalesRepDTO salesRepDTO){
+        salesRepService.addSalesRep(salesRepDTO);
     }
 
-    @PatchMapping("/salesrep/{id}")
+    @PutMapping("/salesrep")
     @ResponseStatus(HttpStatus.OK)
-    public void patchSalesRep(@PathVariable Long id, @RequestBody SalesRepNameDTO salesRepNameDTO){
-        salesRepService.changeSalesRep(id, salesRepNameDTO);
+    public void updateSalesRep(@RequestBody SalesRepDTO salesRepDTO){
+        salesRepService.changeSalesRep(salesRepDTO);
     }
 
     @DeleteMapping("/salesrep/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteSalesRep(@PathVariable Long id){
         salesRepService.delete(id);
-        //TODO should we delete the lead/opportunities associated with a salesrep that gets deleted?
     }
 
 

@@ -1,6 +1,6 @@
 package com.ironhack.salesrep.service.interfaces;
 
-import com.ironhack.salesrep.dto.SalesRepNameDTO;
+import com.ironhack.salesrep.dto.SalesRepDTO;
 import com.ironhack.salesrep.model.SalesRep;
 
 import java.security.InvalidParameterException;
@@ -13,9 +13,9 @@ public interface SalesRepService {
 
     void delete(Long id) throws InvalidParameterException, NoSuchElementException;
 
-    void addSalesRep(SalesRepNameDTO salesRepNameDTO);
+    void addSalesRep(SalesRepDTO salesRepDTO);
 
-    void changeSalesRep(Long id, SalesRepNameDTO salesRepNameDTO);
+    void changeSalesRep(SalesRepDTO salesRepDTO);
 
     List<SalesRep> getAll();
 

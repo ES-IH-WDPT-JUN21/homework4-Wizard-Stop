@@ -2,6 +2,7 @@ package com.ironhack.edgeservice.service.impl;
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
+import com.ironhack.edgeservice.controller.dto.SalesRepDTO;
 import com.ironhack.edgeservice.model.SalesRep;
 import com.ironhack.edgeservice.service.interfaces.SalesRepService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -28,23 +29,24 @@ public class SalesRepServiceImpl implements SalesRepService {
 
     private final Logger logger = LoggerFactory.getLogger(SalesRepServiceImpl.class);
 
-    public void save(SalesRep salesRep) {
-        //LLAMADA A MICROSERVICIO SALESREP
-    }
 
     public SalesRep findById(Long id) throws InvalidParameterException, NoSuchElementException {
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
+
+        return salesRepServiceClient.getSalesRepById(id);
     }
 
     public void delete(Long id) throws InvalidParameterException, NoSuchElementException {
-        //LLAMADA A MICROSERVICIO SALESREP
+        salesRepServiceClient.deleteSalesRep(id);
     }
 
-    public SalesRep createSalesRep() {
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
+    public void addSalesRep(SalesRepDTO salesRepDTO) {
+        salesRepServiceClient.addSalesRep(salesRepDTO);
     }
+
+    public void changeSalesRep(SalesRepDTO salesRepDTO) {
+        salesRepServiceClient.updateSalesRep(salesRepDTO);
+    }
+
 
     @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
     public List<SalesRep> getAll(){
@@ -66,9 +68,6 @@ public class SalesRepServiceImpl implements SalesRepService {
         return list;
     }
 
-    public List<Object[]> showLeadsBySalesRep(){
-        //LLAMADA A MICROSERVICIO SALESREP
-        return null;
-    }
+
 
 }
