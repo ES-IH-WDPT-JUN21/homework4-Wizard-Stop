@@ -80,4 +80,40 @@ public interface ContAccOppServiceClient {
 
     @GetMapping("/closelost_opportunities_by_product")
     public List<Object[]> lostOpportunitiesByProduct();
+
+    @GetMapping("/opportunities_by_country")
+    public List<Object[]> opportunitiesByCountry();
+
+    @GetMapping("/open_opportunities_by_country")
+    public List<Object[]> openOpportunitiesByCountry();
+
+    @GetMapping("/closewon_opportunities_by_country")
+    public List<Object[]> wonOpportunitiesByCountry();
+
+    @GetMapping("/closelost_opportunities_by_country")
+    public List<Object[]> lostOpportunitiesByCountry();
+
+    @GetMapping("/opportunities_by_city")
+    public List<Object[]> opportunitiesByCity();
+
+    @GetMapping("/open_opportunities_by_city")
+    public List<Object[]> openOpportunitiesByCity();
+
+    @GetMapping("/closewon_opportunities_by_city")
+    public List<Object[]> wonOpportunitiesByCity();
+
+    @GetMapping("/closelost_opportunities_by_city")
+    public List<Object[]> lostOpportunitiesByCity();
+
+    @GetMapping("/opportunities_by_industry")
+    public List<Object[]> opportunitiesByIndustry();
+
+    @GetMapping("/open_opportunities_by_industry")
+    public List<Object[]> openOpportunitiesByIndustry();
+
+    @GetMapping("/closewon_opportunities_by_industry")
+    public List<Object[]> wonOpportunitiesByIndustry();
+
+    @GetMapping("/closelost_opportunities_by_industry")
+    public List<Object[]> lostOpportunitiesByIndustry();
 }

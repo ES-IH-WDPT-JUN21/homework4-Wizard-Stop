@@ -15,38 +15,32 @@ public class ReportingServiceImpl implements ReportingService {
 
     @Override
     public List<Object[]> showOpportunitiesBySalesRep() {
-        List<Object[]> report = opportunityRepository.opportunitiesBySalesRep();
-        return report;
+        return opportunityRepository.opportunitiesBySalesRep();
     }
 
     @Override
     public List<Object[]> showClosedWonOpportunitiesBySalesRep() {
-        List<Object[]> report = opportunityRepository.closedWonOpportunitiesBySalesRep();
-        return report;
+        return opportunityRepository.closedWonOpportunitiesBySalesRep();
     }
 
     @Override
     public List<Object[]> showClosedLostOpportunitiesBySalesRep() {
-        List<Object[]> report = opportunityRepository.closedLostOpportunitiesBySalesRep();
-        return report;
+        return opportunityRepository.closedLostOpportunitiesBySalesRep();
     }
 
     @Override
     public List<Object[]> showOpenOpportunitiesBySalesRep() {
-        List<Object[]> report = opportunityRepository.openOpportunitiesBySalesRep();
-        return report;
+        return opportunityRepository.openOpportunitiesBySalesRep();
     }
 
     @Override
     public List<Object[]> opportunitiesByProduct() {
-        List<Object[]> report = opportunityRepository.opportunitiesByProduct();
-        return report;
+        return opportunityRepository.opportunitiesByProduct();
     }
 
     @Override
     public List<Object[]> openOpportunitiesByProduct() {
-        List<Object[]> report = opportunityRepository.openOpportunitiesByProduct();
-        return report;
+        return opportunityRepository.openOpportunitiesByProduct();
     }
 
     @Override
@@ -57,7 +51,66 @@ public class ReportingServiceImpl implements ReportingService {
 
     @Override
     public List<Object[]> lostOpportunitiesByProduct() {
-        List<Object[]> report = opportunityRepository.lostOpportunitiesByProduct();
-        return report;
+        return opportunityRepository.lostOpportunitiesByProduct();
+    }
+
+    @Override
+    public List<Object[]> opportunitiesByCountry() {
+        return opportunityRepository.opportunitiesByCountry();
+    }
+
+    @Override
+    public List<Object[]> openOpportunitiesByCountry() {
+        return opportunityRepository.openOpportunitiesByCountry();
+    }
+
+    @Override
+    public List<Object[]> wonOpportunitiesByCountry() {
+        return opportunityRepository.wonOpportunitiesByCountry();
+    }
+
+    @Override
+    public List<Object[]> lostOpportunitiesByCountry() {
+        return opportunityRepository.lostOpportunitiesByCountry();
+    }
+
+    @Override
+    public List<Object[]> opportunitiesByCity() {
+        return opportunityRepository.opportunitiesByCity();
+    }
+
+    @Override
+    public List<Object[]> openOpportunitiesByCity() {
+        return opportunityRepository.openOpportunitiesByCity();
+    }
+
+    @Override
+    public List<Object[]> wonOpportunitiesByCity() {
+        return opportunityRepository.wonOpportunitiesByCity();
+    }
+
+    @Override
+    public List<Object[]> lostOpportunitiesByCity() {
+        return opportunityRepository.lostOpportunitiesByCity();
+    }
+
+    @Override
+    public List<Object[]> opportunitiesByIndustry() {
+        return opportunityRepository.opportunitiesByIndustry();
+    }
+
+    @Override
+    public List<Object[]> openOpportunitiesByIndustry() {
+        return opportunityRepository.openOpportunitiesByIndustry();
+    }
+
+    @Override
+    public List<Object[]> wonOpportunitiesByIndustry() {
+        return opportunityRepository.wonOpportunitiesByIndustry();
+    }
+
+    @Override
+    public List<Object[]> lostOpportunitiesByIndustry() {
+        return opportunityRepository.lostOpportunitiesByIndustry();
     }
 }

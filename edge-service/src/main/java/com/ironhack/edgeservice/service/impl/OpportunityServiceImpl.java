@@ -2,6 +2,7 @@ package com.ironhack.edgeservice.service.impl;
 
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
+import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
 import com.ironhack.edgeservice.enums.Product;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
@@ -42,21 +43,20 @@ public class OpportunityServiceImpl implements OpportunityService {
         }
 
         //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
-        Contact contact = new Contact("Mario", "345788543", "marioo@gmail.com", "Nosep");
+        Contact contact = new Contact("Dummy", "", "", "");
         contact.setId(1L);
-        Opportunity opportunity = new Opportunity(Product.BOX, 12, contact);
+        Opportunity opportunity = new Opportunity(Product.BOX, 1, contact);
         opportunity.setId(1L);
         return opportunity;
 
-        //throw new ResponseStatusException(HttpStatus.NOT_FOUND,e.getMessage());
     }
 
     public void delete(Long id) {
         //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
     }
 
-    public void save(Opportunity opportunity) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+    public Opportunity save(OpportunityDTO opportunity) {
+        return contAccOppServiceClient.add(opportunity);
     }
 
     public Account findAccountByOpportunity(Opportunity opportunity) {
@@ -78,9 +78,9 @@ public class OpportunityServiceImpl implements OpportunityService {
         }
 
         //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
-        Contact contact = new Contact("Mario", "345788543", "marioo@gmail.com", "Nosep");
+        Contact contact = new Contact("Dummy", "", "", "");
         contact.setId(1L);
-        Opportunity opportunity = new Opportunity(Product.BOX, 12, contact);
+        Opportunity opportunity = new Opportunity(Product.BOX, 1, contact);
         opportunity.setId(1L);
         List<Opportunity> list = new ArrayList<>();
         list.add(opportunity);
@@ -136,63 +136,51 @@ public class OpportunityServiceImpl implements OpportunityService {
     }
 
     public List<Object[]> opportunitiesByCountry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.opportunitiesByCountry();
     }
 
     public List<Object[]> openOpportunitiesByCountry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.openOpportunitiesByCountry();
     }
 
     public List<Object[]> wonOpportunitiesByCountry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.wonOpportunitiesByCountry();
     }
 
     public List<Object[]> lostOpportunitiesByCountry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.lostOpportunitiesByCountry();
     }
 
     public List<Object[]> opportunitiesByCity() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.opportunitiesByCity();
     }
 
     public List<Object[]> openOpportunitiesByCity() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.openOpportunitiesByCity();
     }
 
     public List<Object[]> wonOpportunitiesByCity() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.wonOpportunitiesByCity();
     }
 
     public List<Object[]> lostOpportunitiesByCity() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.lostOpportunitiesByCity();
     }
 
     public List<Object[]> opportunitiesByIndustry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.opportunitiesByIndustry();
     }
 
     public List<Object[]> openOpportunitiesByIndustry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.openOpportunitiesByIndustry();
     }
 
     public List<Object[]> wonOpportunitiesByIndustry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.wonOpportunitiesByIndustry();
     }
 
     public List<Object[]> lostOpportunitiesByIndustry() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.lostOpportunitiesByIndustry();
     }
 
     public double getMeanEmployeeCount() {

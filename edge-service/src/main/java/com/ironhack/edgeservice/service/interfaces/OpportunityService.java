@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.service.interfaces;
 
+import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
 import com.ironhack.edgeservice.exceptions.ExistentElementException;
 import com.ironhack.edgeservice.model.Account;
 import com.ironhack.edgeservice.model.Contact;
@@ -16,7 +17,7 @@ public interface OpportunityService {
 
     void delete(Long id) throws InvalidParameterException, NoSuchElementException;
 
-    void save(Opportunity opportunity) throws ExistentElementException;
+    Opportunity save(OpportunityDTO opportunity);
 
     Account findAccountByOpportunity(Opportunity opportunity) throws NoSuchElementException;
 
@@ -36,7 +37,6 @@ public interface OpportunityService {
     List<Object[]> openOpportunitiesByProduct();
     List<Object[]> wonOpportunitiesByProduct();
     List<Object[]> lostOpportunitiesByProduct();
-
     List<Object[]> opportunitiesByCountry();
     List<Object[]> openOpportunitiesByCountry();
     List<Object[]> wonOpportunitiesByCountry();

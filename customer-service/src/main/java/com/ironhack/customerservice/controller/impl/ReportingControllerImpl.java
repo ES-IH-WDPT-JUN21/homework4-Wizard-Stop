@@ -63,4 +63,76 @@ public class ReportingControllerImpl implements ReportingController {
     public List<Object[]> lostOpportunitiesByProduct() {
         return reportingService.lostOpportunitiesByProduct();
     }
+
+    @GetMapping("/opportunities_by_country")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> opportunitiesByCountry() {
+        return reportingService.opportunitiesByCountry();
+    }
+
+    @GetMapping("/open_opportunities_by_country")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> openOpportunitiesByCountry() {
+        return reportingService.openOpportunitiesByCountry();
+    }
+
+    @GetMapping("/closewon_opportunities_by_country")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> wonOpportunitiesByCountry() {
+        return reportingService.wonOpportunitiesByCountry();
+    }
+
+    @GetMapping("/closelost_opportunities_by_country")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> lostOpportunitiesByCountry() {
+        return reportingService.lostOpportunitiesByCountry();
+    }
+
+    @GetMapping("/opportunities_by_city")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> opportunitiesByCity() {
+        return reportingService.opportunitiesByCity();
+    }
+
+    @GetMapping("/open_opportunities_by_city")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> openOpportunitiesByCity() {
+        return reportingService.openOpportunitiesByCity();
+    }
+
+    @GetMapping("/closewon_opportunities_by_city")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> wonOpportunitiesByCity() {
+        return reportingService.wonOpportunitiesByCity();
+    }
+
+    @GetMapping("/closelost_opportunities_by_city")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> lostOpportunitiesByCity() {
+        return reportingService.lostOpportunitiesByCity();
+    }
+
+    @GetMapping("/opportunities_by_industry")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> opportunitiesByIndustry() {
+        return reportingService.opportunitiesByIndustry();
+    }
+
+    @GetMapping("/open_opportunities_by_industry")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> openOpportunitiesByIndustry() {
+        return reportingService.openOpportunitiesByIndustry();
+    }
+
+    @GetMapping("/closewon_opportunities_by_industry")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> wonOpportunitiesByIndustry() {
+        return reportingService.wonOpportunitiesByIndustry();
+    }
+
+    @GetMapping("/closelost_opportunities_by_industry")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Object[]> lostOpportunitiesByIndustry() {
+        return reportingService.lostOpportunitiesByIndustry();
+    }
 }
