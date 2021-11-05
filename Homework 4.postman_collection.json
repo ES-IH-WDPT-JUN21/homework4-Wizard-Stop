@@ -162,6 +162,464 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Opportunities by Country",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_by_country",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_by_country"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-WON by Country",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/closewon_opportunities_by_country",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"closewon_opportunities_by_country"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-LOST by Country",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/closelost_opportunities_by_country",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"closelost_opportunities_by_country"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities OPEN by Country",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/open_opportunities_by_country",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"open_opportunities_by_country"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities by City",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_by_city",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_by_city"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-WON by City",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-LOST by City",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/closelost_opportunities_by_city",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"closelost_opportunities_by_city"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities OPEN by City",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/open_opportunities_by_city",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"open_opportunities_by_city"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities by Industry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_by_industry",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_by_industry"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-WON by Industry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/closewon_opportunities_by_industry",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"closewon_opportunities_by_industry"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities CLOSED-LOST by Industry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/closelost_opportunities_by_industry",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"closelost_opportunities_by_industry"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Opportunities OPEN by Industry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/open_opportunities_by_industry",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"open_opportunities_by_industry"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mean Employee Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employee_count/mean",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee_count",
+										"mean"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Max EmployeeCount",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employee_count/max",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee_count",
+										"max"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Median Employee Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employee_count/median",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee_count",
+										"median"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Min Employee Count",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/employee_count/min",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee_count",
+										"min"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mean Quantity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/quantity_products/mean",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"quantity_products",
+										"mean"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Median Quantity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/quantity_products/median",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"quantity_products",
+										"median"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Max Quantity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/quantity_products/max",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"quantity_products",
+										"max"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Min Quantity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/quantity_products/min",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"quantity_products",
+										"min"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mean Opportunities per Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_account/mean",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_account",
+										"mean"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Median Opportunities per Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_account/median",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_account",
+										"median"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Max Opportunities per Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_account/max",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_account",
+										"max"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Min Opportunities per Account",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/opportunities_account/min",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"opportunities_account",
+										"min"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
