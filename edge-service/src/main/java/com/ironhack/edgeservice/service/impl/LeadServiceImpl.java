@@ -3,7 +3,12 @@ package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.client.LeadServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
+import com.ironhack.edgeservice.controller.dto.AccountDTO;
+import com.ironhack.edgeservice.controller.dto.ContactDTO;
 import com.ironhack.edgeservice.controller.dto.LeadDTO;
+import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
+import com.ironhack.edgeservice.enums.Product;
+import com.ironhack.edgeservice.enums.Status;
 import com.ironhack.edgeservice.model.*;
 import com.ironhack.edgeservice.service.interfaces.LeadService;
 import com.netflix.discovery.converters.Auto;
@@ -15,8 +20,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class LeadServiceImpl implements LeadService {
@@ -48,7 +55,9 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        return new Lead("Dummy", "", "", "");
+        Lead newLead = new Lead("Tomás", "345987456", "tomaso@gmail.com", "LoadBalancer", (long) 25);
+        newLead.setId(24L);
+        return newLead;
 
     }
 
@@ -70,22 +79,22 @@ public class LeadServiceImpl implements LeadService {
         return "The service you are trying to call is now unavailable. Try later";
     }
 
-// save new lead
+    // save new lead
     @CircuitBreaker(name = "save", fallbackMethod = "saveFallback")
-    public LeadDTO save(LeadDTO leadDTO)  {
+    public LeadDTO save(LeadDTO leadDTO) {
 
         Long salesRep = leadDTO.getSalesRep();
 
         if (salesRepServiceClient.getSalesRepById(salesRep) != null) {
             leadServiceClient.saveNewLead(leadDTO);
-        }else{
+        } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "The SalesRep id provided doesn't exists the Database");
         }
 
         return leadDTO;
     }
 
-    public LeadDTO saveFallback(LeadDTO leadDTO, Exception e){
+    public LeadDTO saveFallback(LeadDTO leadDTO, Exception e) {
         logger.error(e.getMessage());
         logger.error(e.getClass() + "");
 
@@ -93,38 +102,64 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        return new LeadDTO((long)4, "Dummy", "","", "", (long)-1);
+        LeadDTO newLeadDTO = new LeadDTO((long) 4, "Marco Antonio", "555446688", "marcoantonio@emperador.es", "Emperadores SA", (long) 5);
+
+        return newLeadDTO;
     }
 
     // get all leads
-        @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
-        public List<Lead> getAll () {
-            return leadServiceClient.getAllLeads();
+    @CircuitBreaker(name = "getAll", fallbackMethod = "getAllFallback")
+    public List<Lead> getAll() {
+        return leadServiceClient.getAllLeads();
+    }
+
+    public List<Lead> getAllFallback(Exception e) {
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        public List<Lead> getAllFallback (Exception e){
-            logger.error(e.getMessage());
-            logger.error(e.getClass() + "");
+        Lead newLead = new Lead("Fiona", "357087245", "fio_na@gmail.com", "Meredith", (long) 25);
+        newLead.setId(2L);
+        List<Lead> list = new ArrayList<>();
+        list.add(newLead);
+        return list;
+    }
 
-            if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-            }
+    //convert Lead
+    @CircuitBreaker(name = "convertLead", fallbackMethod = "convertLeadFallback")
+    public void convertLead(Long id) {
+        Lead leadToDelete = leadServiceClient.getLeadById(id);
 
-            Lead newLead = new Lead("Dummy", "", "", "");
-            List<Lead> list = new ArrayList<>();
-            list.add(newLead);
-            return list;
-        }
+        Contact contact = leadToDelete.convertLead();
+        ContactDTO contactDTO = new ContactDTO(contact.getName(), contact.getPhoneNumber(), contact.getEmail(), contact.getCompanyName(), contact.getId());
 
+        AccountDTO accountDTO = new AccountDTO();
+        Account account = contAccOppServiceClient.store(accountDTO);
 
+        OpportunityDTO opportunityDTO = new OpportunityDTO(Product.BOX, 5, Status.OPEN, leadToDelete.getSalesRep(), account.getId(), (long) 5);
+        Opportunity opportunity = contAccOppServiceClient.add(opportunityDTO);
 
-        public void convertLead () {
+        leadServiceClient.deleteLeadById(leadToDelete.getId());
+        contAccOppServiceClient.store(accountDTO);
+        contAccOppServiceClient.store(contactDTO);
+        contAccOppServiceClient.add(opportunityDTO);
+    }
 
+    public void convertLeadFallback(Exception e) {
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
 
-            //LLAMADA A MICROSERVICIO LEAD
-            //LLAMADA A MICROSERVICIO CONTACT
-            //LLAMADA A MICROSERVICIO ACCOUNT
-            //LLAMADA A MICROSERVICIO OPPORTUNITY
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
+}
+
+
+
+
+
 

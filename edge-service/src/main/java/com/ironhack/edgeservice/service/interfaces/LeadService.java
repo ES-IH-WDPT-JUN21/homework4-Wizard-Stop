@@ -14,5 +14,5 @@ public interface LeadService {
     LeadDTO save(LeadDTO leadDTO);
     List<Lead> getAll();
 //    Lead createLead();
-    void convertLead();
+    void convertLead(Long id);
 }

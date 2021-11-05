@@ -1,6 +1,7 @@
 package com.ironhack.edgeservice.service.impl;
 
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
+import com.ironhack.edgeservice.client.LeadServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
 import com.ironhack.edgeservice.controller.dto.SalesRepDTO;
 import com.ironhack.edgeservice.model.SalesRep;
@@ -26,6 +27,9 @@ public class SalesRepServiceImpl implements SalesRepService {
 
     @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
+
+    @Autowired
+    LeadServiceClient leadServiceClient;
 
     private final Logger logger = LoggerFactory.getLogger(SalesRepServiceImpl.class);
 
