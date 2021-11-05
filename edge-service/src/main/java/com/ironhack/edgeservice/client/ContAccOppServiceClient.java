@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @FeignClient("customer-service")
@@ -116,4 +117,52 @@ public interface ContAccOppServiceClient {
 
     @GetMapping("/closelost_opportunities_by_industry")
     public List<Object[]> lostOpportunitiesByIndustry();
+
+    @GetMapping("/employee_count/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanEmployeeCount();
+
+    @GetMapping("/employee_count/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianEmployeeCount();
+
+    @GetMapping("/employee_count/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxEmployeeCount();
+
+    @GetMapping("/employee_count/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinEmployeeCount();
+
+    @GetMapping("/quantity_products/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanQuantityOfProducts();
+
+    @GetMapping("/quantity_products/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianQuantityOfProducts();
+
+    @GetMapping("/quantity_products/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxQuantityOfProducts();
+
+    @GetMapping("/quantity_products/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinQuantityOfProducts();
+
+    @GetMapping("/opportunities_account/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanOpportunitiesPerAccount();
+
+    @GetMapping("/opportunities_account/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianOpportunitiesPerAccount();
+
+    @GetMapping("/opportunities_account/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxOpportunitiesPerAccount();
+
+    @GetMapping("/opportunities_account/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinOpportunitiesPerAccount();
 }

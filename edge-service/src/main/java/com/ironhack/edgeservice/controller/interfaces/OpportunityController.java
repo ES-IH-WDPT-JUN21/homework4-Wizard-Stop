@@ -3,6 +3,7 @@ package com.ironhack.edgeservice.controller.interfaces;
 import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
 import com.ironhack.edgeservice.model.Opportunity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface OpportunityController {
@@ -32,4 +33,16 @@ public interface OpportunityController {
     List<Object[]> openOpportunitiesByIndustry();
     List<Object[]> wonOpportunitiesByIndustry();
     List<Object[]> lostOpportunitiesByIndustry();
+    double getMeanEmployeeCount();
+    BigDecimal getMedianEmployeeCount();
+    int getMaxEmployeeCount();
+    int getMinEmployeeCount();
+    double getMeanQuantityOfProducts();
+    BigDecimal getMedianQuantityOfProducts();
+    int getMaxQuantityOfProducts();
+    int getMinQuantityOfProducts();
+    double getMeanOpportunitiesPerAccount();
+    BigDecimal getMedianOpportunitiesPerAccount();
+    int getMaxOpportunitiesPerAccount();
+    int getMinOpportunitiesPerAccount();
 }

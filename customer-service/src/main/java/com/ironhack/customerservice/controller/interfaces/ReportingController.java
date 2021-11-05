@@ -1,5 +1,6 @@
 package com.ironhack.customerservice.controller.interfaces;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ReportingController {
@@ -24,4 +25,16 @@ public interface ReportingController {
     List<Object[]> openOpportunitiesByIndustry();
     List<Object[]> wonOpportunitiesByIndustry();
     List<Object[]> lostOpportunitiesByIndustry();
+    double getMeanEmployeeCount();
+    BigDecimal getMedianEmployeeCount();
+    int getMaxEmployeeCount();
+    int getMinEmployeeCount();
+    double getMeanQuantityOfProducts();
+    BigDecimal getMedianQuantityOfProducts();
+    int getMaxQuantityOfProducts();
+    int getMinQuantityOfProducts();
+    double getMeanOpportunitiesPerAccount();
+    BigDecimal getMedianOpportunitiesPerAccount();
+    int getMaxOpportunitiesPerAccount();
+    int getMinOpportunitiesPerAccount();
 }

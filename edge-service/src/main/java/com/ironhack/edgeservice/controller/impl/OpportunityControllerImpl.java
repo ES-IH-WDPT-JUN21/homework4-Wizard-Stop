@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -166,5 +167,77 @@ public class OpportunityControllerImpl implements OpportunityController {
     @ResponseStatus(HttpStatus.OK)
     public List<Object[]> lostOpportunitiesByIndustry() {
         return opportunityService.lostOpportunitiesByIndustry();
+    }
+
+    @GetMapping("/employee_count/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanEmployeeCount() {
+        return opportunityService.getMeanEmployeeCount();
+    }
+
+    @GetMapping("/employee_count/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianEmployeeCount() {
+        return opportunityService.getMedianEmployeeCount();
+    }
+
+    @GetMapping("/employee_count/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxEmployeeCount() {
+        return opportunityService.getMaxEmployeeCount();
+    }
+
+    @GetMapping("/employee_count/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinEmployeeCount() {
+        return opportunityService.getMinEmployeeCount();
+    }
+
+    @GetMapping("/quantity_products/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanQuantityOfProducts() {
+        return opportunityService.getMeanQuantityOfProducts();
+    }
+
+    @GetMapping("/quantity_products/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianQuantityOfProducts() {
+        return opportunityService.getMedianQuantityOfProducts();
+    }
+
+    @GetMapping("/quantity_products/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxQuantityOfProducts() {
+        return opportunityService.getMaxQuantityOfProducts();
+    }
+
+    @GetMapping("/quantity_products/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinQuantityOfProducts() {
+        return opportunityService.getMinQuantityOfProducts();
+    }
+
+    @GetMapping("/opportunities_account/mean")
+    @ResponseStatus(HttpStatus.OK)
+    public double getMeanOpportunitiesPerAccount() {
+        return opportunityService.getMeanOpportunitiesPerAccount();
+    }
+
+    @GetMapping("/opportunities_account/median")
+    @ResponseStatus(HttpStatus.OK)
+    public BigDecimal getMedianOpportunitiesPerAccount() {
+        return opportunityService.getMedianOpportunitiesPerAccount();
+    }
+
+    @GetMapping("/opportunities_account/max")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMaxOpportunitiesPerAccount() {
+        return opportunityService.getMaxOpportunitiesPerAccount();
+    }
+
+    @GetMapping("/opportunities_account/min")
+    @ResponseStatus(HttpStatus.OK)
+    public int getMinOpportunitiesPerAccount() {
+        return opportunityService.getMinOpportunitiesPerAccount();
     }
 }

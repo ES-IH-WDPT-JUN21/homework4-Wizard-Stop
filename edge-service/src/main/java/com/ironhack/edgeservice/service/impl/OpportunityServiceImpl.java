@@ -4,10 +4,7 @@ package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
 import com.ironhack.edgeservice.enums.Product;
-import com.ironhack.edgeservice.model.Account;
-import com.ironhack.edgeservice.model.Contact;
-import com.ironhack.edgeservice.model.Opportunity;
-import com.ironhack.edgeservice.model.SalesRep;
+import com.ironhack.edgeservice.model.*;
 import com.ironhack.edgeservice.service.interfaces.OpportunityService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +39,6 @@ public class OpportunityServiceImpl implements OpportunityService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
         Contact contact = new Contact("Dummy", "", "", "");
         contact.setId(1L);
         Opportunity opportunity = new Opportunity(Product.BOX, 1, contact);
@@ -52,7 +48,7 @@ public class OpportunityServiceImpl implements OpportunityService {
     }
 
     public void delete(Long id) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+
     }
 
     public Opportunity save(OpportunityDTO opportunity) {
@@ -60,7 +56,7 @@ public class OpportunityServiceImpl implements OpportunityService {
     }
 
     public Account findAccountByOpportunity(Opportunity opportunity) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+
         return null;
     }
 
@@ -77,7 +73,6 @@ public class OpportunityServiceImpl implements OpportunityService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        //Respuesta que lanzaremos cuando la latencia de respuesta supere los 2s
         Contact contact = new Contact("Dummy", "", "", "");
         contact.setId(1L);
         Opportunity opportunity = new Opportunity(Product.BOX, 1, contact);
@@ -88,7 +83,7 @@ public class OpportunityServiceImpl implements OpportunityService {
     }
 
     public Opportunity obtainOpportunity(Contact contact, SalesRep salesRep) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+
         return null;
     }
 
@@ -100,147 +95,191 @@ public class OpportunityServiceImpl implements OpportunityService {
         return contAccOppServiceClient.closeWon(id);
 
     }
-
+    @CircuitBreaker(name = "showOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showOpportunitiesBySalesRep(){
-        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+
         return contAccOppServiceClient.showOpportunitiesBySalesRep();
 
     }
+
+    @CircuitBreaker(name = "showClosedWonOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showClosedWonOpportunitiesBySalesRep(){
-        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+
         return contAccOppServiceClient.showClosedWonOpportunitiesBySalesRep();
     }
+
+
+    @CircuitBreaker(name = "showClosedLostOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showClosedLostOpportunitiesBySalesRep(){
-        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+
         return contAccOppServiceClient.showClosedLostOpportunitiesBySalesRep();
     }
+
+
+
+    @CircuitBreaker(name = "showOpenOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showOpenOpportunitiesBySalesRep(){
-        // Aquí debería ir llamada al microservicio de Salesrep para rescatar el nombre del SalesRep con el id
+
         return contAccOppServiceClient.showOpenOpportunitiesBySalesRep();
     }
 
+
+
+    @CircuitBreaker(name = "opportunitiesByProduct", fallbackMethod = "Fallback")
     public List<Object[]> opportunitiesByProduct() {
         return contAccOppServiceClient.opportunitiesByProduct();
     }
 
+
+    @CircuitBreaker(name = "openOpportunitiesByProduct", fallbackMethod = "Fallback")
     public List<Object[]> openOpportunitiesByProduct() {
         return contAccOppServiceClient.openOpportunitiesByProduct();
     }
 
+
+    @CircuitBreaker(name = "wonOpportunitiesByProduct", fallbackMethod = "Fallback")
     public List<Object[]> wonOpportunitiesByProduct() {
         return contAccOppServiceClient.wonOpportunitiesByProduct();
     }
 
+    @CircuitBreaker(name = "lostOpportunitiesByProduct", fallbackMethod = "Fallback")
     public List<Object[]> lostOpportunitiesByProduct() {
         return contAccOppServiceClient.lostOpportunitiesByProduct();
     }
-
+    @CircuitBreaker(name = "opportunitiesByCountry", fallbackMethod = "Fallback")
     public List<Object[]> opportunitiesByCountry() {
         return contAccOppServiceClient.opportunitiesByCountry();
     }
-
+    @CircuitBreaker(name = "openOpportunitiesByCountry", fallbackMethod = "Fallback")
     public List<Object[]> openOpportunitiesByCountry() {
         return contAccOppServiceClient.openOpportunitiesByCountry();
     }
-
+    @CircuitBreaker(name = "wonOpportunitiesByCountry", fallbackMethod = "Fallback")
     public List<Object[]> wonOpportunitiesByCountry() {
         return contAccOppServiceClient.wonOpportunitiesByCountry();
     }
-
+    @CircuitBreaker(name = "lostOpportunitiesByCountry", fallbackMethod = "Fallback")
     public List<Object[]> lostOpportunitiesByCountry() {
         return contAccOppServiceClient.lostOpportunitiesByCountry();
     }
-
+    @CircuitBreaker(name = "opportunitiesByCity", fallbackMethod = "Fallback")
     public List<Object[]> opportunitiesByCity() {
         return contAccOppServiceClient.opportunitiesByCity();
     }
-
+    @CircuitBreaker(name = "openOpportunitiesByCity", fallbackMethod = "Fallback")
     public List<Object[]> openOpportunitiesByCity() {
         return contAccOppServiceClient.openOpportunitiesByCity();
     }
-
+    @CircuitBreaker(name = "wonOpportunitiesByCity", fallbackMethod = "Fallback")
     public List<Object[]> wonOpportunitiesByCity() {
         return contAccOppServiceClient.wonOpportunitiesByCity();
     }
-
+    @CircuitBreaker(name = "lostOpportunitiesByCity", fallbackMethod = "Fallback")
     public List<Object[]> lostOpportunitiesByCity() {
         return contAccOppServiceClient.lostOpportunitiesByCity();
     }
-
+    @CircuitBreaker(name = "opportunitiesByIndustry", fallbackMethod = "Fallback")
     public List<Object[]> opportunitiesByIndustry() {
         return contAccOppServiceClient.opportunitiesByIndustry();
     }
-
+    @CircuitBreaker(name = "openOpportunitiesByIndustry", fallbackMethod = "Fallback")
     public List<Object[]> openOpportunitiesByIndustry() {
         return contAccOppServiceClient.openOpportunitiesByIndustry();
     }
-
+    @CircuitBreaker(name = "wonOpportunitiesByIndustry", fallbackMethod = "Fallback")
     public List<Object[]> wonOpportunitiesByIndustry() {
         return contAccOppServiceClient.wonOpportunitiesByIndustry();
     }
-
-    public List<Object[]> lostOpportunitiesByIndustry() {
+    @CircuitBreaker(name = "lostOpportunitiesByIndustry", fallbackMethod = "Fallback")
+    public List<Object[]> lostOpportunitiesByIndustry(){
         return contAccOppServiceClient.lostOpportunitiesByIndustry();
     }
+    public List<Object[]> Fallback(Exception e) {
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        List<Object[]> list = new ArrayList<>();
+        Object[] object = new Object[]{e.getMessage(), e.getCause()};
+        list.add(object);
+        return list;
+    }
+    @CircuitBreaker(name = "getMeanEmployeeCount", fallbackMethod = "FallbackDouble")
+    public double getMeanEmployeeCount(){
+        return contAccOppServiceClient.getMeanEmployeeCount();
+    }
 
-    public double getMeanEmployeeCount() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+    @CircuitBreaker(name = "getMedianEmployeeCount", fallbackMethod = "FallbackBigDecimal")
+    public BigDecimal getMedianEmployeeCount(){
+        return contAccOppServiceClient.getMedianEmployeeCount();
+    }
+    @CircuitBreaker(name = "getMaxEmployeeCount", fallbackMethod = "FallbackInt")
+    public int getMaxEmployeeCount(){
+        return contAccOppServiceClient.getMaxEmployeeCount();
+    }
+    @CircuitBreaker(name = "getMinEmployeeCount", fallbackMethod = "FallbackInt")
+    public int getMinEmployeeCount(){
+        return contAccOppServiceClient.getMinEmployeeCount();
+    }
+    @CircuitBreaker(name = "getMeanQuantityOfProducts", fallbackMethod = "FallbackDouble")
+    public double getMeanQuantityOfProducts(){
+        return contAccOppServiceClient.getMeanQuantityOfProducts();
+    }
+    @CircuitBreaker(name = "getMedianQuantityOfProducts", fallbackMethod = "FallbackBigDecimal")
+    public BigDecimal getMedianQuantityOfProducts(){
+        return contAccOppServiceClient.getMedianQuantityOfProducts();
+    }
+
+    @CircuitBreaker(name = "getMaxQuantityOfProducts", fallbackMethod = "FallbackInt")
+    public int getMaxQuantityOfProducts(){
+        return contAccOppServiceClient.getMaxQuantityOfProducts();
+    }
+    @CircuitBreaker(name = "getMinQuantityOfProducts", fallbackMethod = "FallbackInt")
+    public int getMinQuantityOfProducts(){
+        return contAccOppServiceClient.getMinQuantityOfProducts();
+    }
+    @CircuitBreaker(name = "getMeanOpportunitiesPerAccount", fallbackMethod = "FallbackDouble")
+    public double getMeanOpportunitiesPerAccount(){
+        return contAccOppServiceClient.getMeanOpportunitiesPerAccount();
+    }
+    @CircuitBreaker(name = "getMedianOpportunitiesPerAccount", fallbackMethod = "FallbackBigDecimal")
+    public BigDecimal getMedianOpportunitiesPerAccount() {
+        return contAccOppServiceClient.getMedianOpportunitiesPerAccount();
+    }
+    @CircuitBreaker(name = "getMaxOpportunitiesPerAccount", fallbackMethod = "FallbackInt")
+    public int getMaxOpportunitiesPerAccount() {
+        return contAccOppServiceClient.getMaxOpportunitiesPerAccount();
+    }
+    @CircuitBreaker(name = "getMinOpportunitiesPerAccount", fallbackMethod = "FallbackInt")
+    public int getMinOpportunitiesPerAccount(){
+        return contAccOppServiceClient.getMinOpportunitiesPerAccount();
+    }
+
+    public int FallbackInt(Exception e){
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        return 0;
+    }
+
+    public double FallbackDouble(Exception e){
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
         return 0.00;
     }
 
-    public BigDecimal getMedianEmployeeCount() {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
-    }
-
-    public int getMaxEmployeeCount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
-    }
-
-    public int getMinEmployeeCount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
-    }
-
-    public double getMeanQuantityOfProducts() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0.00;
-    }
-
-    public BigDecimal getMedianQuantityOfProducts() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
-    }
-
-
-    public int getMaxQuantityOfProducts() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
-    }
-
-    public int getMinQuantityOfProducts() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
-    }
-
-    public double getMeanOpportunitiesPerAccount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0.00;
-    }
-
-    public BigDecimal getMedianOpportunitiesPerAccount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
-    }
-
-    public int getMaxOpportunitiesPerAccount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
-    }
-
-    public int getMinOpportunitiesPerAccount() throws IllegalStateException {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return 0;
+    public BigDecimal FallbackBigDecimal(Exception e){
+        logger.error(e.getMessage());
+        logger.error(e.getClass() + "");
+        if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+        return new BigDecimal(0);
     }
 }

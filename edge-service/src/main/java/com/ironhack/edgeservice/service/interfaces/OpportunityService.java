@@ -49,8 +49,7 @@ public interface OpportunityService {
     List<Object[]> openOpportunitiesByIndustry();
     List<Object[]> wonOpportunitiesByIndustry();
     List<Object[]> lostOpportunitiesByIndustry();
-
-    double getMeanEmployeeCount() throws IllegalStateException;
+    double getMeanEmployeeCount();
     BigDecimal getMedianEmployeeCount();
     int getMaxEmployeeCount();
     int getMinEmployeeCount();

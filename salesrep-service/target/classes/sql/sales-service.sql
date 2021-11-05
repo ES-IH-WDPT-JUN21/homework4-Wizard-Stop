@@ -10,7 +10,6 @@ CREATE TABLE `sales_rep`(
 	PRIMARY KEY(id)
 );
 INSERT INTO sales_rep( name) VALUES
-('Antonio'),
-('Paco'),
-('Alberto'),
-('Alejandro');
+('Juan'),
+('Alfonso'),
+('Marcos');
