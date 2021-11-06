@@ -95,35 +95,62 @@ public class OpportunityServiceImpl implements OpportunityService {
         return contAccOppServiceClient.closeWon(id);
 
     }
-    @CircuitBreaker(name = "showOpportunitiesBySalesRep", fallbackMethod = "Fallback")
+   
+   @CircuitBreaker(name = "showOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showOpportunitiesBySalesRep(){
 
-        return contAccOppServiceClient.showOpportunitiesBySalesRep();
-
+        List<Object[]> inList = contAccOppServiceClient.showOpportunitiesBySalesRep();
+        List<Object[]> outList = new ArrayList<>();
+        for(Object[] objects: inList) {
+            SalesRep name = salesRepServiceClient.getSalesRepById(Long.valueOf((Integer) objects[0])); //names
+            Object opportunities = "opportunities: " + objects[1];
+            Object[] newObjects = {name, opportunities};
+            outList.add(newObjects);
+        }
+        return outList;
     }
 
     @CircuitBreaker(name = "showClosedWonOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showClosedWonOpportunitiesBySalesRep(){
 
-        return contAccOppServiceClient.showClosedWonOpportunitiesBySalesRep();
+        List<Object[]> inList = contAccOppServiceClient.showClosedWonOpportunitiesBySalesRep();
+        List<Object[]> outList = new ArrayList<>();
+        for(Object[] objects: inList) {
+            SalesRep name = salesRepServiceClient.getSalesRepById(Long.valueOf((Integer) objects[0])); //names
+            Object opportunities = "opportunities: " + objects[1];
+            Object[] newObjects = {name, opportunities};
+            outList.add(newObjects);
+        }
+        return outList;
     }
-
 
     @CircuitBreaker(name = "showClosedLostOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showClosedLostOpportunitiesBySalesRep(){
 
-        return contAccOppServiceClient.showClosedLostOpportunitiesBySalesRep();
+        List<Object[]> inList = contAccOppServiceClient.showClosedLostOpportunitiesBySalesRep();
+        List<Object[]> outList = new ArrayList<>();
+        for(Object[] objects: inList) {
+            SalesRep name = salesRepServiceClient.getSalesRepById(Long.valueOf((Integer) objects[0])); //names
+            Object opportunities = "opportunities: " + objects[1];
+            Object[] newObjects = {name, opportunities};
+            outList.add(newObjects);
+        }
+        return outList;
     }
-
-
 
     @CircuitBreaker(name = "showOpenOpportunitiesBySalesRep", fallbackMethod = "Fallback")
     public List<Object[]> showOpenOpportunitiesBySalesRep(){
 
-        return contAccOppServiceClient.showOpenOpportunitiesBySalesRep();
+        List<Object[]> inList = contAccOppServiceClient.showOpenOpportunitiesBySalesRep();
+        List<Object[]> outList = new ArrayList<>();
+        for(Object[] objects: inList) {
+            SalesRep name = salesRepServiceClient.getSalesRepById(Long.valueOf((Integer) objects[0])); //names
+            Object opportunities = "opportunities: " + objects[1];
+            Object[] newObjects = {name, opportunities};
+            outList.add(newObjects);
+        }
+        return outList;
     }
-
-
 
     @CircuitBreaker(name = "opportunitiesByProduct", fallbackMethod = "Fallback")
     public List<Object[]> opportunitiesByProduct() {
