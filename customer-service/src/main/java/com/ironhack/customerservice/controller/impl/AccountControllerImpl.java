@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -27,6 +28,12 @@ public class AccountControllerImpl implements AccountController {
     @ResponseStatus(HttpStatus.OK)
     public Account getAccountById(@PathVariable Long id) {
         return accountService.getById(id);
+    }
+
+    @GetMapping("/checkaccounts/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean checkAccount(@PathVariable Long id) {
+        return accountService.checkAccount(id);
     }
 
     @PostMapping("/accounts")

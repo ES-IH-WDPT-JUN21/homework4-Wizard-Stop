@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.controller.interfaces;
 
+import com.ironhack.edgeservice.controller.dto.ConvertLeadDTO;
 import com.ironhack.edgeservice.controller.dto.LeadDTO;
 import com.ironhack.edgeservice.model.Lead;
 
@@ -12,5 +13,6 @@ public interface LeadController {
     LeadDTO saveNewLead(LeadDTO leadDTO);
     String deleteLeadById(long id);
     String convertLead(long id);
+    void convertLeadToOpportunity(ConvertLeadDTO convertLeadDTO);
 
 }

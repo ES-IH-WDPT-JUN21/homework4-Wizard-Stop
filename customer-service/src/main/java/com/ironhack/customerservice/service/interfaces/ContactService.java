@@ -11,7 +11,7 @@ public interface ContactService {
 
     Contact contact (Long id);
 
-    ContactDTO store(String name, String phoneNumber, String email, String companyName, Long accountId);
+    Contact store(String name, String phoneNumber, String email, String companyName, Long accountId);
 
     void delete (Long id);
 }

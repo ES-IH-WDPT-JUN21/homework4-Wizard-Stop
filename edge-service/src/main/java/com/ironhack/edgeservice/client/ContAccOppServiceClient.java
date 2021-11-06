@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -37,8 +37,11 @@ public interface ContAccOppServiceClient {
     @GetMapping("/accounts/{id}")
     public Account getAccountById(@PathVariable Long id);
 
+    @GetMapping("/checkaccounts/{id}")
+    public boolean checkAccount(@PathVariable Long id);
+
     @PostMapping("/accounts")
-    public Account store(@RequestBody @Valid AccountDTO account);
+    public Account store(@RequestBody /*@Valid*/ AccountDTO account);
 
     @DeleteMapping("/accounts/{id}")
     public void deleteById(@PathVariable Long id);
@@ -50,7 +53,7 @@ public interface ContAccOppServiceClient {
     public Opportunity getById(@PathVariable(name = "id") Long opportunityId);
 
     @PostMapping("/opportunities")
-    public Opportunity add(@Valid @RequestBody OpportunityDTO opportunity);
+    public Opportunity add(@RequestBody OpportunityDTO opportunity);
 
     @GetMapping("/opportunities/closelost/{id}")
     public String closeLost(@PathVariable(name = "id") Long id);

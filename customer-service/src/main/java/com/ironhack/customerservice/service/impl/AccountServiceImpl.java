@@ -67,4 +67,16 @@ public class AccountServiceImpl implements AccountService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The ID " + id + " does not match with any account");
         }
     }
+
+    public boolean checkAccount(Long id){
+        boolean exists = false;
+            Optional<Account> optionalAccount = accountRepository.findById(id);
+            if(optionalAccount.isPresent()){
+                exists = true;
+            }
+
+
+
+        return exists;
+    }
 }

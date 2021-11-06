@@ -23,6 +23,8 @@ public class ContactServiceImpl implements ContactService {
     @Autowired
     private AccountRepository accountRepository;
 
+
+
     @Override
     public List<Contact> findAll() {
         List<Contact> contactList = contactRepository.findAll();
@@ -38,14 +40,21 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public ContactDTO store(String name, String phoneNumber, String email, String companyName, Long accountId) {
+    public Contact store(String name, String phoneNumber, String email, String companyName, Long accountId) {
         Optional<Account> optionalAccount = accountRepository.findById(accountId); // Aquí habría que llamar al microservicio de Account
         if(optionalAccount.isPresent()){
-            Contact contact = new Contact(name,phoneNumber,email,companyName);
+            Contact contact = new Contact();
+            contact.setName(name);
+            contact.setPhoneNumber(phoneNumber);
+            contact.setEmail(email);
+            contact.setCompanyName(companyName);
             contact.setAccount(optionalAccount.get());
             contactRepository.save(contact);
+            Account account = optionalAccount.get();
+            account.addContact(contact);
+            accountRepository.save(account);
             ContactDTO contactDTO = new ContactDTO(name,phoneNumber,email,companyName,accountId);
-            return contactDTO;
+            return contact;
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The ID " + accountId + " does not match with any account");
         }

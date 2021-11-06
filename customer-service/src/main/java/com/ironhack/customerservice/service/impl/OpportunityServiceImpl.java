@@ -46,8 +46,10 @@ public class OpportunityServiceImpl implements OpportunityService {
     public Opportunity add(OpportunityDTO opportunity) {
 
             Opportunity opportunityNew = new Opportunity();
-            Account account = accountRepository.getById(opportunity.getAccountId());
-            Contact contact = contactRepository.getById(opportunity.getDecisionMakerId());
+            Optional<Account> accountOptional = accountRepository.findById(opportunity.getAccountId());
+            Optional<Contact> contactOptional = contactRepository.findById(opportunity.getDecisionMakerId());
+            Account account = accountOptional.get();
+            Contact contact = contactOptional.get();
             opportunityNew.setStatus(opportunity.getStatus());
             opportunityNew.setProduct(opportunity.getProduct());
             opportunityNew.setQuantity(opportunity.getQuantity());

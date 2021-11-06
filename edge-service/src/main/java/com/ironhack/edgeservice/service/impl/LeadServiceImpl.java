@@ -3,10 +3,7 @@ package com.ironhack.edgeservice.service.impl;
 import com.ironhack.edgeservice.client.ContAccOppServiceClient;
 import com.ironhack.edgeservice.client.LeadServiceClient;
 import com.ironhack.edgeservice.client.SalesRepServiceClient;
-import com.ironhack.edgeservice.controller.dto.AccountDTO;
-import com.ironhack.edgeservice.controller.dto.ContactDTO;
-import com.ironhack.edgeservice.controller.dto.LeadDTO;
-import com.ironhack.edgeservice.controller.dto.OpportunityDTO;
+import com.ironhack.edgeservice.controller.dto.*;
 import com.ironhack.edgeservice.enums.Product;
 import com.ironhack.edgeservice.enums.Status;
 import com.ironhack.edgeservice.model.*;
@@ -24,6 +21,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class LeadServiceImpl implements LeadService {
@@ -148,6 +146,25 @@ public class LeadServiceImpl implements LeadService {
         contAccOppServiceClient.add(opportunityDTO);
 
         return "Lead with id" + leadToDelete.getId() + "converted to Opportunity";
+    }
+
+    public void convertLeadToOpportunity(ConvertLeadDTO convertLeadDTO) {
+        Lead lead = leadServiceClient.getLeadById(convertLeadDTO.getLeadId());
+        leadServiceClient.deleteLeadById(convertLeadDTO.getLeadId());
+        Boolean checkAccount = contAccOppServiceClient.checkAccount(convertLeadDTO.getAccountId());
+        if(checkAccount = true){
+            ContactDTO contactDTO = new ContactDTO(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName(), convertLeadDTO.getAccountId());
+            Contact receivedContact = contAccOppServiceClient.store(contactDTO);
+            OpportunityDTO opportunityDTO = new OpportunityDTO(convertLeadDTO.getProduct(), convertLeadDTO.getQuantity(), convertLeadDTO.getStatus(), lead.getSalesRep(), convertLeadDTO.getAccountId(), receivedContact.getId());
+            Opportunity opportunity = contAccOppServiceClient.add(opportunityDTO);
+        }else{
+            AccountDTO accountDTO = new AccountDTO(convertLeadDTO.getIndustry(), convertLeadDTO.getEmployeeCount(), convertLeadDTO.getCity(), convertLeadDTO.getCountry());
+            Account account = contAccOppServiceClient.store(accountDTO);
+            ContactDTO contactDTO = new ContactDTO(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName(), account.getId());
+            Contact receivedContact = contAccOppServiceClient.store(contactDTO);
+            OpportunityDTO opportunityDTO = new OpportunityDTO(convertLeadDTO.getProduct(), convertLeadDTO.getQuantity(), convertLeadDTO.getStatus(), lead.getSalesRep(), account.getId(), receivedContact.getId());
+            Opportunity opportunity = contAccOppServiceClient.add(opportunityDTO);
+        }
     }
 
     public String convertLeadFallback(Exception e) {

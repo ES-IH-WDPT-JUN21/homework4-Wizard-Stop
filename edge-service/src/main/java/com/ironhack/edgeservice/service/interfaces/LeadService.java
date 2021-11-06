@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.service.interfaces;
 
+import com.ironhack.edgeservice.controller.dto.ConvertLeadDTO;
 import com.ironhack.edgeservice.controller.dto.LeadDTO;
 import com.ironhack.edgeservice.exceptions.ExistentElementException;
 import com.ironhack.edgeservice.model.Lead;
@@ -15,4 +16,5 @@ public interface LeadService {
     List<Lead> getAll();
 //    Lead createLead();
     String convertLead(Long id);
+    void convertLeadToOpportunity(ConvertLeadDTO convertLeadDTO);
 }

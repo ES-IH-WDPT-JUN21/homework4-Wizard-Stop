@@ -94,6 +94,10 @@ public class Account {
         this.contacts = contacts;
     }
 
+    public void addContact(Contact contact){
+        contacts.add(contact);
+    }
+
     public List<Opportunity> getOpportunities() {
         return opportunities;
     }
