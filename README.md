@@ -11,7 +11,7 @@ Account and Opportunity classes are contained. This last microservice is in char
 
 ## 💻 Usage
 
-Prior to being able to start the CRM System we need to manually setup our Databases using the included SQL Script
+Prior to being able to start the CRM System we need to manually setup our Databases using the included SQL Scripts
 located in `account-service/src/main/resources/account.sql` , `customer-service/src/main/resources/sql` and
 `lead-service/src/main/resources/sql` .
 
