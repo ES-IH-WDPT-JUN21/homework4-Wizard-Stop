@@ -34,7 +34,7 @@ public class LeadControllerImpl implements LeadController {
         return leadService.getAllLeads();
     }
 
-    // esto hay que revisarlo en el edge para validar el id del salesrep al crear lead
+
     @PostMapping("/leads")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadDTO saveNewLead(@RequestBody LeadDTO leadDTO) throws ResponseStatusException {

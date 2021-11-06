@@ -56,7 +56,7 @@ public class LeadServiceImpl implements LeadService {
         }
 
         Lead newLead = new Lead("Tomás", "345987456", "tomaso@gmail.com", "LoadBalancer", (long) 25);
-        newLead.setId(24L);
+        newLead.getId();
         return newLead;
 
     }
@@ -102,7 +102,7 @@ public class LeadServiceImpl implements LeadService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
 
-        LeadDTO newLeadDTO = new LeadDTO((long) 4, "Marco Antonio", "555446688", "marcoantonio@emperador.es", "Emperadores SA", (long) 5);
+        LeadDTO newLeadDTO = new LeadDTO("Marco Antonio", "555446688", "marcoantonio@emperador.es", "Emperadores SA", (long) 5);
 
         return newLeadDTO;
     }
@@ -122,7 +122,7 @@ public class LeadServiceImpl implements LeadService {
         }
 
         Lead newLead = new Lead("Fiona", "357087245", "fio_na@gmail.com", "Meredith", (long) 25);
-        newLead.setId(2L);
+        newLead.getId();
         List<Lead> list = new ArrayList<>();
         list.add(newLead);
         return list;
@@ -130,7 +130,7 @@ public class LeadServiceImpl implements LeadService {
 
     //convert Lead
     @CircuitBreaker(name = "convertLead", fallbackMethod = "convertLeadFallback")
-    public void convertLead(Long id) {
+    public String convertLead(Long id) {
         Lead leadToDelete = leadServiceClient.getLeadById(id);
 
         Contact contact = leadToDelete.convertLead();
@@ -146,15 +146,18 @@ public class LeadServiceImpl implements LeadService {
         contAccOppServiceClient.store(accountDTO);
         contAccOppServiceClient.store(contactDTO);
         contAccOppServiceClient.add(opportunityDTO);
+
+        return "Lead with id" + leadToDelete.getId() + "converted to Opportunity";
     }
 
-    public void convertLeadFallback(Exception e) {
+    public String convertLeadFallback(Exception e) {
         logger.error(e.getMessage());
         logger.error(e.getClass() + "");
 
         if (e.getClass().toString().equals("class feign.FeignException$NotFound")) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
+        return "The service you are trying to call is now unavailable. Try later";
     }
 }
 

@@ -1,7 +1,7 @@
 package com.homework4leadservice.leadservice.controller.DTO;
 
 public class LeadDTO {
-
+    private Long id;
     private String name;
     private String phoneNumber;
     private String email;
@@ -25,6 +25,9 @@ public class LeadDTO {
 
     // Getters and Setters
 
+    public Long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

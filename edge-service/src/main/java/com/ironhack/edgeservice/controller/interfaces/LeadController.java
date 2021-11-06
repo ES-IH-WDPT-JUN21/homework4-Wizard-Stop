@@ -11,5 +11,6 @@ public interface LeadController {
     List<Lead> getAllLeads();
     LeadDTO saveNewLead(LeadDTO leadDTO);
     String deleteLeadById(long id);
+    String convertLead(long id);
 
 }

@@ -14,8 +14,7 @@ public class LeadDTO {
     public LeadDTO() {
     }
 
-    public LeadDTO(Long id, String name, String phoneNumber, String email, String companyName, Long salesRep) {
-        this.id = id;
+    public LeadDTO( String name, String phoneNumber, String email, String companyName, Long salesRep) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -28,9 +27,9 @@ public class LeadDTO {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
