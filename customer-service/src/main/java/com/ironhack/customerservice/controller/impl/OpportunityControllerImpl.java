@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,8 +34,8 @@ public class OpportunityControllerImpl implements OpportunityController {
     }
 
     @PostMapping("/opportunities")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Opportunity add(@Valid @RequestBody OpportunityDTO opportunity){
+    @ResponseStatus(HttpStatus.OK)
+    public Opportunity add(@RequestBody OpportunityDTO opportunity){
         return opportunityService.add(opportunity);
     }
 

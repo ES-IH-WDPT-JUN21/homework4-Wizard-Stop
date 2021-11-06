@@ -10,4 +10,5 @@ public interface AccountService {
     Account getById(Long id);
     Account store(AccountDTO account);
     void deleteById(Long id);
+    boolean checkAccount(Long id);
 }

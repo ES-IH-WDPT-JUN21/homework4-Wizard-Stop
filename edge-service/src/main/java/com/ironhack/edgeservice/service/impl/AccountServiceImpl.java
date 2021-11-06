@@ -27,17 +27,16 @@ public class AccountServiceImpl implements AccountService {
     private final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     public Account findById(Long id)  {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        return contAccOppServiceClient.getAccountById(id);
     }
 
     public void delete(Long id) {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
+        contAccOppServiceClient.deleteById(id);
     }
 
     public Account save(AccountDTO account)  {
-        //LLAMADA A MICROSERVICIO ACCOUNT, CONTACT Y OPPORTUNITY
-        return null;
+        Account account1 = contAccOppServiceClient.store(account);
+        return account1;
     }
 
     public Account obtainAccount(Contact contact, Opportunity opportunity){

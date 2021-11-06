@@ -6,7 +6,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class AccountDTO {
-    @NotNull(message = "Id must be provided")
     private Long id;
     @NotNull(message = "Industry must be provided")
     private Industry industry;

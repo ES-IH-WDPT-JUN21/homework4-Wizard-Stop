@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.controller.impl;
 
+import com.ironhack.edgeservice.controller.dto.ConvertLeadDTO;
 import com.ironhack.edgeservice.controller.dto.LeadDTO;
 import com.ironhack.edgeservice.controller.interfaces.LeadController;
 import com.ironhack.edgeservice.model.Lead;
@@ -45,6 +46,12 @@ public class LeadControllerImpl implements LeadController {
     @ResponseStatus(HttpStatus.CREATED)
     public String convertLead(@PathVariable(name = "id") long id){
         return leadService.convertLead(id);
+    }
+
+    @PostMapping("/lead/opportunity")
+    @ResponseStatus(HttpStatus.OK)
+    public void convertLeadToOpportunity(@RequestBody ConvertLeadDTO convertLeadDTO) {
+        leadService.convertLeadToOpportunity(convertLeadDTO);
     }
 
 

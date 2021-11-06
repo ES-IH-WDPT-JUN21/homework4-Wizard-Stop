@@ -11,7 +11,7 @@ public interface ContactController {
 
     Contact contact (Long id);
 
-    ContactDTO store(ContactDTO contactDTO);
+    Contact store(ContactDTO contactDTO);
 
     void delete (Long id);
 }
