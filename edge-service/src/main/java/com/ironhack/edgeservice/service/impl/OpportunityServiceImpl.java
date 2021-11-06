@@ -23,6 +23,9 @@ public class OpportunityServiceImpl implements OpportunityService {
 
     @Autowired
     ContAccOppServiceClient contAccOppServiceClient;
+    
+    @Autowired
+    private SalesRepServiceClient salesRepServiceClient;
 
     private final Logger logger = LoggerFactory.getLogger(OpportunityServiceImpl.class);
 
